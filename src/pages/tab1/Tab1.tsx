@@ -1,5 +1,6 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../../components/ExploreContainer';
+// import ExploreContainer from '../../components/ExploreContainer';
+import RegisterComponents from '../../components/Register/RegisterComponent'; 
 import './Tab1.css';
 
 const Tab1: React.FC = () => {
@@ -16,7 +17,8 @@ const Tab1: React.FC = () => {
             <IonTitle size="large">Home page</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="Home page" />
+        {/* <ExploreContainer name="Home page" /> */}
+        <RegisterComponents />
       </IonContent>
     </IonPage>
   );
