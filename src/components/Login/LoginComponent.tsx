@@ -1,6 +1,7 @@
 import './LoginComponent.css';
 import React from 'react';
-import { IonInput, IonItem, IonLabel, IonList } from '@ionic/react';
+import { IonList } from '@ionic/react';
+import { CustomFieldLabel } from '../CustomFieldLabel/CustomFieldLabel';
 import { Button } from '../Button/Button';
 import { CustomLink } from '../CustomLink/CustomLink';
 
@@ -12,14 +13,16 @@ const RegisterComponents: React.FC = () => {
                
                 <IonList>
                     <form>
-                        <IonItem>
-                            <IonLabel>Email: </IonLabel>
-                            <IonInput type="email" placeholder="Enter Name"></IonInput>
-                        </IonItem>
-                        <IonItem>
-                            <IonLabel>Password: </IonLabel>
-                            <IonInput type="password" placeholder="Enter password"></IonInput>
-                        </IonItem>
+                        <CustomFieldLabel
+                            label="Email"
+                            type="email"
+                            placeholder="Enter email"
+                        />
+                        <CustomFieldLabel
+                            label="Password"
+                            type="password"
+                            placeholder="Enter password"
+                        />
                     </form>
                     <Button text="Login" />
                 </IonList>

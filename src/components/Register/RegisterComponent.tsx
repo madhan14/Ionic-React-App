@@ -1,8 +1,9 @@
 import './RegisterComponents.css';
 import React from 'react';
-import { IonInput, IonItem, IonLabel, IonList, IonButton } from '@ionic/react';
+import { IonList } from '@ionic/react';
 import { Button } from '../Button/Button';
 import { CustomLink } from '../CustomLink/CustomLink';
+import { CustomFieldLabel } from '../CustomFieldLabel/CustomFieldLabel';
 
 const RegisterComponents: React.FC = () => {
     return (
@@ -12,22 +13,27 @@ const RegisterComponents: React.FC = () => {
                
                 <IonList>
                     <form>
-                    <IonItem>
-                        <IonLabel>Name: </IonLabel>
-                        <IonInput type="text" placeholder="Enter Name"></IonInput>
-                    </IonItem>
-                    <IonItem>
-                        <IonLabel>Phone Number: </IonLabel>
-                        <IonInput maxlength={10} type="tel" placeholder="Enter phone number"></IonInput>
-                    </IonItem>
-                    <IonItem>
-                        <IonLabel>Email: </IonLabel>
-                        <IonInput type="email" placeholder="Enter email"></IonInput>
-                    </IonItem>
-                    <IonItem>
-                        <IonLabel>Password: </IonLabel>
-                        <IonInput type="password" placeholder="Enter password"></IonInput>
-                    </IonItem>
+                        <CustomFieldLabel
+                            label="Name"
+                            type="text"
+                            placeholder="Enter name"
+                        />
+                        <CustomFieldLabel
+                            label="Phone Number"
+                            type="tel"
+                            maxlength={10}
+                            placeholder="Enter phone number"
+                        />
+                        <CustomFieldLabel
+                            label="Email"
+                            type="email"
+                            placeholder="Enter email"
+                        />
+                        <CustomFieldLabel
+                            label="Password"
+                            type="password"
+                            placeholder="Enter password"
+                        />
                     </form>
                     <Button text="Register" />
                 </IonList>

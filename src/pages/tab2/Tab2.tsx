@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonPage } from '@ionic/react';
 import LoginComponent from '../../components/Login/LoginComponent';
 import './Tab2.css';
 

@@ -1,4 +1,4 @@
-import { IonCol, IonRouterLink, IonRow, IonButton } from "@ionic/react";
+import { IonCol, IonRow, IonButton } from "@ionic/react";
 import './Button.css';
 
 export const Button = props => (

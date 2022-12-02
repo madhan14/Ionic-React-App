@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonPage, } from '@ionic/react';
 import RegisterComponents from '../../components/Register/RegisterComponent'; 
 import './Tab1.css';
 
