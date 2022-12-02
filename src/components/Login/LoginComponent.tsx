@@ -1,6 +1,8 @@
 import './LoginComponent.css';
 import React from 'react';
-import { IonInput, IonItem, IonLabel, IonList, IonButton } from '@ionic/react';
+import { IonInput, IonItem, IonLabel, IonList } from '@ionic/react';
+import { Button } from '../Button/Button';
+import { CustomLink } from '../CustomLink/CustomLink';
 
 const RegisterComponents: React.FC = () => {
     return (
@@ -19,11 +21,10 @@ const RegisterComponents: React.FC = () => {
                             <IonInput type="password" placeholder="Enter password"></IonInput>
                         </IonItem>
                     </form>
-                    <IonButton size="default" type="submit">
-                        Register
-                    </IonButton>
+                    <Button text="Login" />
                 </IonList>
-                <p>New to this App? <a href="#">Register</a> </p>
+                <CustomLink message="Don't have an account?" text="Sign in" link="/register" />
+                
             </div>
         </>
     );

@@ -12,8 +12,8 @@ import {
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 // import { home, personCircle } from 'ionicons/icons';
-// import Tab1 from './pages/tab1/Tab1';
-// import Tab2 from './pages/tab2/Tab2';
+import Tab1 from './pages/tab1/Tab1';
+import Tab2 from './pages/tab2/Tab2';
 import Index from './pages/Index/Index';
 
 /* Core CSS required for Ionic components to work properly */
@@ -66,6 +66,12 @@ const App: React.FC = () => (
       <IonRouterOutlet>
         <Route exact path="/">
           <Index />
+        </Route>
+        <Route exact path="/register">
+          <Tab1 />
+        </Route>
+        <Route exact path="/login">
+          <Tab2 />
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>
