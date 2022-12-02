@@ -1,18 +1,20 @@
-import { Redirect, Route } from 'react-router-dom';
+// import { Redirect, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import {
   IonApp,
-  IonIcon,
-  IonLabel,
+  // IonIcon,
+  // IonLabel,
   IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
-  IonTabs,
+  // IonTabBar,
+  // IonTabButton,
+  // IonTabs,
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { home, personCircle } from 'ionicons/icons';
-import Tab1 from './pages/tab1/Tab1';
-import Tab2 from './pages/tab2/Tab2';
+// import { home, personCircle } from 'ionicons/icons';
+// import Tab1 from './pages/tab1/Tab1';
+// import Tab2 from './pages/tab2/Tab2';
+import Index from './pages/Index/Index';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -38,7 +40,7 @@ setupIonicReact();
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonTabs>
+      {/* <IonTabs>
         <IonRouterOutlet>
           <Route exact path="/Home">
             <Tab1 />
@@ -60,7 +62,12 @@ const App: React.FC = () => (
             <IonLabel>Profile</IonLabel>
           </IonTabButton>
         </IonTabBar>
-      </IonTabs>
+      </IonTabs> */}
+      <IonRouterOutlet>
+        <Route exact path="/">
+          <Index />
+        </Route>
+      </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
 );

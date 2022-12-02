@@ -11,11 +11,6 @@ const Tab2: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Profile page</IonTitle>
-          </IonToolbar>
-        </IonHeader>
         <ExploreContainer name="Profile page" />
       </IonContent>
     </IonPage>

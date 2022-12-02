@@ -1,12 +1,12 @@
 import './RegisterComponents.css';
 import React from 'react';
-import { IonContent, IonInput, IonItem, IonLabel, IonList, IonButton } from '@ionic/react';
+import { IonInput, IonItem, IonLabel, IonList, IonButton } from '@ionic/react';
 
 const RegisterComponents: React.FC = () => {
     return (
         <>
-            <IonContent className="ion-padding">
-                <h1>Register Yourself</h1>
+            <div className="container">
+                <h1>Register</h1>
                
                 <IonList>
                     <form>
@@ -27,12 +27,13 @@ const RegisterComponents: React.FC = () => {
                         <IonInput type="password" placeholder="Enter password"></IonInput>
                     </IonItem>
                     </form>
+                    <IonButton size="default" type="submit">
+                        Register
+                    </IonButton>
                 </IonList>
-                
-                <div className="register_button">
-                    <IonButton size="default" type="submit">Register</IonButton>
-                </div>
-            </IonContent>
+                <p>Already a member? <a>Login</a> </p>
+
+            </div>
         </>
     );
 }
