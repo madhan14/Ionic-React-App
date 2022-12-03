@@ -66,7 +66,7 @@ const App: React.FC = () => (
         </IonTabBar>
       </IonTabs> */}
       <IonRouterOutlet>
-        <Route exact path="/">
+        <Route exact path="/tab4">
           <Index />
         </Route>
         <Route exact path="/register">
@@ -78,7 +78,7 @@ const App: React.FC = () => (
         <Route exact path="/tab3">
           <Tab3 />
         </Route>
-        <Route exact path="/tab4">
+        <Route exact path="/">
           <Tab4 />
         </Route>
       </IonRouterOutlet>

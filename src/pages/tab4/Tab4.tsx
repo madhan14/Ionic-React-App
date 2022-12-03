@@ -1,22 +1,22 @@
 import React from 'react';
 import './Tab4.css';
-import { IonCol, IonGrid, IonRow, IonContent, IonPage, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
+// import { IonCol, IonGrid, IonRow, IonContent, IonPage, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
+import { IonCol, IonGrid, IonRow, IonContent, IonPage } from '@ionic/react';
 import { video } from './data';
 
 export default class Grid extends React.Component {
 
-    test() {
-        return (
-            video.map((videos, key) => {
-                console.log(key)
-                console.log(videos.name)
-                console.log(videos.src)
-            })
-        );
-    };
+    // test() {
+    //     return (
+    //         video.map((videos) => {
+    //             return (
+    //                 console.log(videos.src)
+    //             );
+    //         })
+    //     );
+    // };
     
     render (){
-        
         return(
             <>
                 {/* {this.test()} */}
@@ -25,20 +25,11 @@ export default class Grid extends React.Component {
                         <div className="container">
                             <IonGrid>
                                 <IonRow>
-                                {video.map((videos, key) => {
+                                {video.map((videos, index) => {
                                     return(
-                                        <> 
-                                            <IonCol>
-                                                <IonCard >
-                                                    <iframe src={videos.src} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-
-                                                    <IonCardHeader>
-                                                        <IonCardTitle>{key}</IonCardTitle>
-                                                        <IonCardSubtitle>{videos.name}</IonCardSubtitle>
-                                                    </IonCardHeader>
-                                                </IonCard>
+                                            <IonCol key={index}>
+                                                <iframe src={videos.src} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>                                                    
                                             </IonCol>
-                                        </>
                                     );
                                 })}
 
