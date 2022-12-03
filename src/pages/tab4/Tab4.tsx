@@ -15,27 +15,27 @@ export default class Grid extends React.Component {
                             <IonGrid>
                                 <IonRow>
                                     <IonCol>
-                                    <IonCard>
-                                        <IonCardHeader>
-                                            <IonCardTitle>Card Title</IonCardTitle>
-                                            <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
-                                        </IonCardHeader>
+                                        <IonCard>
+                                            {/* <IonCardHeader>
+                                                <IonCardTitle></IonCardTitle>
+                                                <IonCardSubtitle></IonCardSubtitle>
+                                            </IonCardHeader> */}
 
-                                        <IonCardContent>
-                                            Here's a small text description for the card content. Nothing more, nothing less.
-                                        </IonCardContent>
+                                            <IonCardContent>
+                                                <iframe src="https://www.youtube.com/embed/ndi9yMrak8Q" title="7.11.2022. 9 Memory Poem. THE RIVER. READING PRACTICE." allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                                            </IonCardContent>
                                         </IonCard>
                                     </IonCol>
                                     <IonCol>
-                                    <IonCard>
-                                        <IonCardHeader>
-                                            <IonCardTitle>Card Title</IonCardTitle>
-                                            <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
-                                        </IonCardHeader>
+                                        <IonCard>
+                                            <IonCardHeader>
+                                                <IonCardTitle>Card Title</IonCardTitle>
+                                                <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+                                            </IonCardHeader>
 
-                                        <IonCardContent>
-                                            Here's a small text description for the card content. Nothing more, nothing less.
-                                        </IonCardContent>
+                                            <IonCardContent>
+                                                Here's a small text description for the card content. Nothing more, nothing less.
+                                            </IonCardContent>
                                         </IonCard>
                                     </IonCol>
                                 </IonRow>
