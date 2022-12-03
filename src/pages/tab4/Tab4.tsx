@@ -16,14 +16,8 @@ export default class Grid extends React.Component {
                                 <IonRow>
                                     <IonCol>
                                         <IonCard>
-                                            {/* <IonCardHeader>
-                                                <IonCardTitle></IonCardTitle>
-                                                <IonCardSubtitle></IonCardSubtitle>
-                                            </IonCardHeader> */}
-
-                                            <IonCardContent>
-                                                <iframe src="https://www.youtube.com/embed/ndi9yMrak8Q" title="7.11.2022. 9 Memory Poem. THE RIVER. READING PRACTICE." allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-                                            </IonCardContent>
+                                            {/* <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" /> */}
+                                            <iframe src="https://www.youtube.com/embed/ndi9yMrak8Q" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                                         </IonCard>
                                     </IonCol>
                                     <IonCol>
