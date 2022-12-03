@@ -1,6 +1,6 @@
 import { IonContent, IonPage } from '@ionic/react';
-import LoginComponent from '../../components/Login/LoginComponent';
-import './Tab2.css';
+import LoginComponent from '../../components/Login/Login';
+import './Tab3.css';
 
 const Tab2: React.FC = () => {
   return (
