@@ -1,25 +1,19 @@
 import React from 'react';
-import './Tab4.css';
+import './Tab5.css';
 // import { IonCol, IonGrid, IonRow, IonContent, IonPage, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
 import { IonCol, IonGrid, IonRow, IonContent, IonPage, IonToolbar, IonTitle, IonHeader, IonButton } from '@ionic/react';
-import { video } from './data';
+import { videos }  from './videos';
+import { video }  from './data';
 
 export default class Grid extends React.Component {
-
-    // test() {
-    //     return (
-    //         video.map((videos) => {
-    //             return (
-    //                 console.log(videos.src)
-    //             );
-    //         })
-    //     );
-    // };
+    test() {
+        console.log(videos);    
+    };
     
     render (){
         return(
             <>
-                {/* {this.test()} */}
+                {this.test()}
                 <IonPage>
                     <IonHeader>
                         <IonToolbar>
@@ -40,7 +34,16 @@ export default class Grid extends React.Component {
                                             </IonCol>
                                     );
                                 })}
-
+                                {/* {
+                                    video.forEach((element: any) => {
+                                        var url = element.fields;
+                                        return(
+                                            <IonCol>
+                                                <iframe src={url} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>                                                    
+                                            </IonCol>
+                                        );
+                                    })
+                                } */}
                                 </IonRow>
                             </IonGrid>
                         </div>

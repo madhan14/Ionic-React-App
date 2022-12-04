@@ -30,34 +30,28 @@ import { ErrorMessage } from '@hookform/error-message';
 
 const App: React.FunctionComponent = () => {
   const {
-    handleSubmit,
-    control,
-    setValue,
-    register,
-    getValues,
-    formState: { errors }
-  } = useForm({
-    defaultValues: {
-      rangeInfo: 150,
-      gender: 'MALE',
-      email: '',
-      privateToggle: false,
-      privateCheck: true,
-      radioGrp: 'biff',
-      startDate: '2021-8'
-    }
-  });
+    handleSubmit, control, setValue, register, getValues, formState: { errors } } = useForm({
+      defaultValues: {
+        rangeInfo: 150,
+        gender: 'MALE',
+        email: '',
+        privateToggle: false,
+        privateCheck: true,
+        radioGrp: 'biff',
+        startDate: '2021-8'
+      }
+    });
 
-  console.log(errors);
-  console.log(getValues());
+    console.log(errors);
+    console.log(getValues());
 
-  /**
-   *
-   * @param data
-   */
-  const onSubmit = (data: any) => {
-    alert(JSON.stringify(data, null, 2));
-  };
+    /**
+     *
+     * @param data
+     */
+    const onSubmit = (data: any) => {
+      alert(JSON.stringify(data, null, 2));
+    };
 
   return (
     <IonApp>
