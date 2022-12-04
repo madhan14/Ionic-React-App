@@ -26,7 +26,7 @@ const RegisterComponents: React.FC = () => {
           fetch('https://api.airtable.com/v0/appl3Ezzwjsm0yz0h/users', {
             method: 'GET',
             headers: {
-                "Authorization": "Bearer patOd07YCKTykSYHt.6f141bf0b89294a0e14c8ad17952d11b15a9740c21a87c456d57fced7dbe4f6f"
+                "Authorization": "Bearer token"
             },
             redirect: 'follow'
           })
