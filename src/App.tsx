@@ -12,13 +12,11 @@ import {
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 // import { home, personCircle } from 'ionicons/icons';
-import Tab1 from './pages/tab1/Tab1';
-import Tab2 from './pages/tab2/Tab2';
-import Tab3 from './pages/tab3/Tab3';
-import Tab4 from './pages/tab4/Tab4';
-import Tab5 from './pages/tab5/Tab5';
-import Tab6 from './pages/tab6/Tab6';
 import Index from './pages/Index/Index';
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
+import ModalForm from './pages/ModalForm/ModalForm';
+import AddVideos from './pages/AddVideos/AddVideos';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -68,27 +66,25 @@ const App: React.FC = () => (
         </IonTabBar>
       </IonTabs> */}
       <IonRouterOutlet>
-        <Route exact path="/tab4">
+        <Route exact path="/">
           <Index />
         </Route>
-        <Route exact path="/register">
-          <Tab1 />
-        </Route>
         <Route exact path="/login">
-          <Tab2 />
+          <Login />
         </Route>
-        <Route exact path="/tab3">
-          <Tab3 />
+        <Route exact path="/register">
+          <Register />
         </Route>
-        <Route exact path="/listVideos">
-          <Tab5 />
+        <Route exact path="/ModalForm">
+          <ModalForm />
         </Route>
         <Route exact path="/addVideos">
-          <Tab6 />
+          <AddVideos />
         </Route>
-        <Route exact path="/">
-          <Tab4 />
-        </Route>
+
+        {/* <Route exact path="/listVideos">
+          <Tab5 />
+        </Route> */}
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

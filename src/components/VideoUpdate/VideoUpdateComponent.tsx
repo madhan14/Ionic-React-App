@@ -18,24 +18,30 @@ const RegisterComponents: React.FC = () => {
          * @param data
          */
         const onSubmit = (userData: any) => {
-          console.log(userData);
-          var inputData = JSON.stringify({
-            "records": [
-                {
-                    "fields": {
-                        "Title": userData.Title,
-                        "url": userData.url,
-                        "active": userData.active
+            console.log(userData);
+
+            if(!userData.active){
+                var status = 'inActive';
+            } else {
+                var status = 'active';
+            }
+            var inputData = JSON.stringify({
+                "records": [
+                    {
+                        "fields": {
+                            "Title": userData.Title,
+                            "url": userData.url,
+                            "active": status
+                        }
                     }
-                }
-            ] 
-          });
-          console.log(inputData);
+                ] 
+            });
+            console.log(inputData);
 
           fetch('https://api.airtable.com/v0/appoWhRvLK7iOlxJY/videos', {
             method: 'POST',
             headers: {
-                "Authorization": "Bearer token",
+                "Authorization": "Bearer pat5xxuQ6KRHHR0hr.67219bb3c5e8969093f950e639c5a6a1f5150bbe36c4007d7381ce48be6b275a",
                 "Content-Type": "application/json"
             },
             body: inputData,
