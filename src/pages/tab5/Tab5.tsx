@@ -1,19 +1,19 @@
 import React from 'react';
 import './Tab5.css';
-// import { IonCol, IonGrid, IonRow, IonContent, IonPage, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
-import { IonCol, IonGrid, IonRow, IonContent, IonPage, IonToolbar, IonTitle, IonHeader, IonButton } from '@ionic/react';
-import { videos }  from './videos';
-import { video }  from './data';
+import { IonCol, IonGrid, IonRow, IonContent, IonPage, IonToolbar, IonTitle, IonHeader } from '@ionic/react';
+import { datas }  from './videos';
 
 export default class Grid extends React.Component {
-    test() {
-        console.log(videos);    
-    };
+    // test() {
+    //     datas.forEach(element => {
+    //         console.log(element);
+    //     });  
+    // };
     
     render (){
         return(
             <>
-                {this.test()}
+                {/* {this.test()} */}
                 <IonPage>
                     <IonHeader>
                         <IonToolbar>
@@ -27,23 +27,16 @@ export default class Grid extends React.Component {
                         <div className="container">
                             <IonGrid>
                                 <IonRow>
-                                {video.map((videos, index) => {
-                                    return(
-                                            <IonCol key={index}>
-                                                <iframe src={videos.src} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>                                                    
-                                            </IonCol>
-                                    );
-                                })}
-                                {/* {
-                                    video.forEach((element: any) => {
-                                        var url = element.fields;
+                                {
+                                    datas.map((element, index) => {
+                                        var url = element.url;
                                         return(
-                                            <IonCol>
+                                            <IonCol key={index}>
                                                 <iframe src={url} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>                                                    
                                             </IonCol>
                                         );
                                     })
-                                } */}
+                                }
                                 </IonRow>
                             </IonGrid>
                         </div>

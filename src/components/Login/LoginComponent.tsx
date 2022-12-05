@@ -1,14 +1,12 @@
 import './LoginComponent.css';
 import React from 'react';
 import { IonItem, IonList, IonLabel, IonInput, IonButton } from '@ionic/react';
-import { CustomFieldLabel } from '../CustomFieldLabel/CustomFieldLabel';
-import { Button } from '../Button/Button';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 
 const RegisterComponents: React.FC = () => {
     const {
-        handleSubmit, control, setValue, register, getValues, formState: { errors } } = useForm({
+        handleSubmit, register, formState: { errors } } = useForm({
          
         });
     
@@ -39,7 +37,7 @@ const RegisterComponents: React.FC = () => {
                 for(var i=0; i<data.records.length; i++){
                     var email = data.records[i].fields.email;
                     var pwd = data.records[i].fields.pwd;
-                    if(userEmail == email && userPwd == pwd){
+                    if(userEmail === email && userPwd === pwd){
                         
                         alert('success');
                     }
