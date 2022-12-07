@@ -5,16 +5,11 @@ import { datas }  from './videos';
 // import { video } from './data';
 
 export default class Grid extends React.Component {
-    // test() {
-    //     datas.forEach(element => {
-    //         console.log(element);
-    //     });  
-    // };
     
     render (){
         return(
             <>
-                {/* {this.test()} */}
+                {console.log(datas)}
                 <IonPage>
                     <IonHeader>
                         <IonToolbar>

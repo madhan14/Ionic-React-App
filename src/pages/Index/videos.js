@@ -10,8 +10,10 @@ fetch("https://api.airtable.com/v0/appoWhRvLK7iOlxJY/videos",{
 .then(result => {
     var test_vid = JSON.parse(result).records;
     test_vid.forEach((element) => {
-        var url = element.fields;
-        data.push(url);
+        var elements = element.fields;
+        if(elements.active == "Active"){
+            data.push(elements);
+        }
     });
 })
 .catch(error => console.log('error', error));
