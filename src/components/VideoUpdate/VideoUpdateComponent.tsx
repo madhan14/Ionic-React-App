@@ -41,7 +41,7 @@ const RegisterComponents: React.FC = () => {
           fetch('https://api.airtable.com/v0/appoWhRvLK7iOlxJY/videos', {
             method: 'POST',
             headers: {
-                "Authorization": "Bearer pat5xxuQ6KRHHR0hr.67219bb3c5e8969093f950e639c5a6a1f5150bbe36c4007d7381ce48be6b275a",
+                "Authorization": "Bearer token",
                 "Content-Type": "application/json"
             },
             body: inputData,
