@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonRouterOutlet, IonSegment, IonSegmentButton, IonPage, IonContent } from "@ionic/react";
 import { Route } from 'react-router-dom';
 import ModalForm from '../ModalForm/ModalForm';
-import CRUD from "../../components/Crud/Crud";
-
+import CrudVideos from "../../components/CrudVideos/CrudVideos";
+import CrudUser from "../../components/CrudUsers/CrudUsers";
 
 const AdminIndex: React.FC = () => {
     const [videoActive, setVideoActive] = useState<boolean>(true);
@@ -32,7 +32,7 @@ const AdminIndex: React.FC = () => {
                     </IonSegmentButton>
                 </IonSegment>
                 <IonContent>
-                    {videoActive ? ( <CRUD video={videoActive} user={userActive} />) : ( <CRUD video={videoActive} user={userActive}/> )}
+                    { videoActive ? <CrudVideos /> : <CrudUser /> }
                 </IonContent>
             </IonPage>
             

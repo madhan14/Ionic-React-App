@@ -22,7 +22,7 @@ const RegisterComponents: React.FC = () => {
           console.log(userData);
           let userEmail = userData.email;
           let userPwd =  userData.password;
-          fetch('https://api.airtable.com/v0/appl3Ezzwjsm0yz0h/users', {
+          fetch(env.user_url, {
             method: 'GET',
             headers: {
                 "Authorization": "Bearer "+env.list_user
