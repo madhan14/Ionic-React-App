@@ -15,7 +15,7 @@ const Index: React.FC = () => {
     
     const sendRequest = () => {
         return axios
-            .get("https://api.airtable.com/v0/appoWhRvLK7iOlxJY/videos", {
+            .get(env.video_url, {
                 method: 'GET',
                 headers: {
                     "Authorization": "Bearer "+env.list_videos
@@ -30,14 +30,14 @@ const Index: React.FC = () => {
     return (
         <>
             <IonPage>
-            <IonHeader>
-                <IonToolbar>
-                    <IonTitle>
-                        Videos
-                        <a className="inline" href="/login">Sign In</a>
-                    </IonTitle>
-                </IonToolbar>
-            </IonHeader>
+                <IonHeader>
+                    <IonToolbar>
+                        <IonTitle>
+                            Videos
+                            <a className="inline" href="/login">Sign In</a>
+                        </IonTitle>
+                    </IonToolbar>
+                </IonHeader>
                 <IonContent fullscreen>
                     <div className="container">
                         <IonGrid>

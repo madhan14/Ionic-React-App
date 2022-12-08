@@ -39,7 +39,7 @@ const RegisterComponents: React.FC = () => {
             });
             console.log(inputData);
 
-          fetch('https://api.airtable.com/v0/appoWhRvLK7iOlxJY/videos', {
+          fetch(env.video_url, {
             method: 'POST',
             headers: {
                 "Authorization": "Bearer "+env.ced_videos,

@@ -1,47 +1,41 @@
-import React from "react";
-import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonRouterOutlet } from "@ionic/react";
-import { home, personCircle, videocam } from 'ionicons/icons';
+import React, { useState } from "react";
+import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonRouterOutlet, IonSegment, IonSegmentButton, IonPage, IonContent } from "@ionic/react";
 import { Route } from 'react-router-dom';
 import ModalForm from '../ModalForm/ModalForm';
+import CRUD from "../../components/Crud/Crud";
+
 
 const AdminIndex: React.FC = () => {
+    const [videoActive, setVideoActive] = useState<boolean>(true);
+    const [userActive, setUserActive] = useState<boolean>(false);
     return (
         <>
-            <IonTabs>
-                <IonRouterOutlet>
-                    <Route exact path="/addVideo">
-                        {/* <ModalForm /> */}
-                    </Route>
-                    <Route exact path="/editVideo">
-                        {/* <ModalForm /> */}
-                    </Route>
-                    <Route exact path="/addUser">
-                        {/* <ModalForm /> */}
-                    </Route>
-                    <Route exact path="/editUser">
-                        {/* <ModalForm /> */}
-                    </Route>
-                </IonRouterOutlet>
+            <IonPage>
+                <IonSegment value={videoActive ? "video": "user"}>
+                    <IonSegmentButton
+                        value="video"
+                        onClick={() => {
+                            setVideoActive(true);
+                            setUserActive(false);
+                        }}
+                    >
+                        <IonLabel>Vidoes</IonLabel>
+                    </IonSegmentButton>
+                    <IonSegmentButton
+                        value="user"
+                        onClick={() => {
+                            setVideoActive(false);
+                            setUserActive(true);
+                        }}
+                    >
+                        <IonLabel>Users</IonLabel>
+                    </IonSegmentButton>
+                </IonSegment>
+                <IonContent>
+                    {videoActive ? ( <CRUD video={videoActive} user={userActive} />) : ( <CRUD video={videoActive} user={userActive}/> )}
+                </IonContent>
+            </IonPage>
             
-                <IonTabBar slot="bottom">
-                    <IonTabButton tab="Add Video" href="/addVideo">
-                        <IonIcon icon={videocam} />
-                        <IonLabel>Add Video</IonLabel>
-                    </IonTabButton>
-                    <IonTabButton tab="Edit Videos" href="/editVideo">
-                        <IonIcon icon={videocam} />
-                        <IonLabel>Edit Videos</IonLabel>
-                    </IonTabButton>
-                    <IonTabButton tab="Add User" href="/addUser">
-                        <IonIcon icon={personCircle} />
-                        <IonLabel>Add User</IonLabel>
-                    </IonTabButton>
-                    <IonTabButton tab="Edit Users" href="/editUser">
-                        <IonIcon icon={personCircle} />
-                        <IonLabel>Edit Users</IonLabel>
-                    </IonTabButton>
-                </IonTabBar>
-            </IonTabs> 
         </>
     );
 };
