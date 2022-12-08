@@ -1,54 +1,64 @@
+import {  IonContent, IonHeader, IonTitle,IonToolbar, IonItem, IonAvatar, IonImg, IonLabel, IonList, IonPage, IonGrid, IonRow, IonCol } from '@ionic/react';
 import React from 'react';
-import './Index.css';
-import { IonCol, IonGrid, IonRow, IonContent, IonPage, IonToolbar, IonTitle, IonHeader } from '@ionic/react';
-import { datas }  from './videos';
-// import { video } from './data';
-
-export default class Grid extends React.Component {
+import { useState } from 'react';
+import axios from 'axios';
     
-    render (){
-        return(
-            <>
-                {console.log(datas)}
-                <IonPage>
-                    <IonHeader>
-                        <IonToolbar>
-                            <IonTitle>
-                                English Videos
-                                <a className="inline" href="/login">Sign In</a>
-                            </IonTitle>
-                        </IonToolbar>
-                    </IonHeader>
-                    <IonContent fullscreen>
-                        <div className="container">
-                            <IonGrid>
-                                <IonRow>
-                                {
-                                    datas.map((element, index) => {
-                                        var url = element.url;
-                                        return(
-                                            <IonCol key={index}>
-                                                <iframe src={url} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>                                                    
-                                            </IonCol>
-                                        );
-                                    })
-                                }
-                                {/* {
-                                    video.map((videos, index) => {
-                                        return(
-                                            <IonCol key={index}>
-                                                <iframe src={videos.src} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>                                                    
-                                            </IonCol>
-                                        );
-                                    })
-                                } */}
-                                </IonRow>
-                            </IonGrid>
-                        </div>
-                    </IonContent>
-                </IonPage>
-                
-            </>
-        )
-    }
-};
+const Index: React.FC = () => {
+    const [ listItems, setListItems ] = useState<any>([]);
+
+    React.useEffect(() => {
+        sendRequest().then((data: any) => {
+            setListItems(data.records)
+        });
+    }, []);
+    
+    const sendRequest = () => {
+        return axios
+            .get("https://api.airtable.com/v0/appoWhRvLK7iOlxJY/videos", {
+                method: 'GET',
+                headers: {
+                    "Authorization": "Bearer token"
+                }
+            })
+            .then((response: any) => {
+                // console.log(response);
+                return response.data;
+            })
+    };
+
+    return (
+        <>
+            <IonPage>
+            <IonHeader>
+                <IonToolbar>
+                    <IonTitle>
+                        Videos
+                        <a className="inline" href="/login">Sign In</a>
+                    </IonTitle>
+                </IonToolbar>
+            </IonHeader>
+                <IonContent fullscreen>
+                    <div className="container">
+                        <IonGrid>
+                            <IonRow>
+                            {
+                                listItems.map((element: any, index: any) => {
+                                    if(element.fields.active == "Active"){
+                                    return(
+                                        <IonCol key={index}>
+                                        <iframe src={element.fields.url} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>                                                    
+                                        </IonCol> 
+                                    );
+                                    }
+                                })
+                            }
+                            </IonRow>
+                        </IonGrid>
+                    </div>
+                </IonContent>
+            </IonPage>
+        </>
+    );
+}
+    
+export default Index;

@@ -13,7 +13,6 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 // import { home, personCircle } from 'ionicons/icons';
 import Index from './pages/Index/Index';
-import Index1 from './pages/Index/Index1';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import ModalForm from './pages/ModalForm/ModalForm';
@@ -69,9 +68,6 @@ const App: React.FC = () => (
       <IonRouterOutlet>
         <Route exact path="/">
           <Index />
-        </Route>
-        <Route exact path="/Index1">
-          <Index1 />
         </Route>
         <Route exact path="/login">
           <Login />
