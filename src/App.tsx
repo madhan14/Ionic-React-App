@@ -17,6 +17,7 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import ModalForm from './pages/ModalForm/ModalForm';
 import AddVideos from './pages/AddVideos/AddVideos';
+import AdminIndex from './pages/AdminIndex/AdminIndex';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -77,6 +78,9 @@ const App: React.FC = () => (
         </Route>
         <Route exact path="/ModalForm">
           <ModalForm />
+        </Route>
+        <Route exact path="/AdminIndex">
+          <AdminIndex />
         </Route>
         <Route exact path="/addVideos">
           <AddVideos />

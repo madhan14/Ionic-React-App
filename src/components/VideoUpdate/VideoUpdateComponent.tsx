@@ -3,6 +3,7 @@ import React from 'react';
 import { IonItem, IonList, IonLabel, IonInput, IonButton, IonToggle } from '@ionic/react';
 import { useForm, Controller } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
+import { env } from '../../pages/env/env';
 
 const RegisterComponents: React.FC = () => {
     const {
@@ -41,7 +42,7 @@ const RegisterComponents: React.FC = () => {
           fetch('https://api.airtable.com/v0/appoWhRvLK7iOlxJY/videos', {
             method: 'POST',
             headers: {
-                "Authorization": "Bearer token",
+                "Authorization": "Bearer "+env.ced_videos,
                 "Content-Type": "application/json"
             },
             body: inputData,
