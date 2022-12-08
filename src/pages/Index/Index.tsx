@@ -43,11 +43,12 @@ const Index: React.FC = () => {
                         <IonGrid>
                             <IonRow>
                             {
+                                // eslint-disable-next-line
                                 listItems.map((element: any, index: any) => {
-                                    if(element.fields.active == "Active"){
+                                    if(element.fields.active === "Active"){
                                     return(
                                         <IonCol key={index}>
-                                        <iframe src={element.fields.url} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>                                                    
+                                            <iframe title={element.fields.Title} src={element.fields.url} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>                                                    
                                         </IonCol> 
                                     );
                                     }
