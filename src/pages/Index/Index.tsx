@@ -1,7 +1,8 @@
-import {  IonContent, IonHeader, IonTitle,IonToolbar, IonItem, IonAvatar, IonImg, IonLabel, IonList, IonPage, IonGrid, IonRow, IonCol } from '@ionic/react';
+import {  IonContent, IonHeader, IonTitle,IonToolbar, IonPage, IonGrid, IonRow, IonCol } from '@ionic/react';
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
+import { env } from '../env/env';
     
 const Index: React.FC = () => {
     const [ listItems, setListItems ] = useState<any>([]);
@@ -17,7 +18,7 @@ const Index: React.FC = () => {
             .get("https://api.airtable.com/v0/appoWhRvLK7iOlxJY/videos", {
                 method: 'GET',
                 headers: {
-                    "Authorization": "Bearer token"
+                    "Authorization": "Bearer "+env.list_videos
                 }
             })
             .then((response: any) => {

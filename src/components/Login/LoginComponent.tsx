@@ -3,6 +3,7 @@ import React from 'react';
 import { IonItem, IonList, IonLabel, IonInput, IonButton } from '@ionic/react';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
+import { env } from '../../pages/env/env';
 
 const RegisterComponents: React.FC = () => {
     const {
@@ -24,7 +25,7 @@ const RegisterComponents: React.FC = () => {
           fetch('https://api.airtable.com/v0/appl3Ezzwjsm0yz0h/users', {
             method: 'GET',
             headers: {
-                "Authorization": "Bearer token"
+                "Authorization": "Bearer "+env.list_user
             },
             redirect: 'follow'
           })
