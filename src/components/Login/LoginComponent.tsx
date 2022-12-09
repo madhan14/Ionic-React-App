@@ -39,7 +39,7 @@ const RegisterComponents: React.FC = () => {
                     var email = data.records[i].fields.email;
                     var pwd = data.records[i].fields.pwd;
                     if(userEmail === email && userPwd === pwd){
-                        window.location.href = '/addVideos'
+                        window.location.href = '/adminIndex'
                         // alert('success');
                     }
                 }

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { IonLabel, IonSegment, IonSegmentButton, IonPage, IonContent } from "@ionic/react";
+import { IonLabel, IonSegment, IonSegmentButton, IonPage, IonContent, IonIcon } from "@ionic/react";
 import CrudVideos from "../../components/CrudVideos/CrudVideos";
 import CrudUser from "../../components/CrudUsers/CrudUsers";
+import { personCircleOutline, videocamOutline } from "ionicons/icons";
 
 const AdminIndex: React.FC = () => {
     const [videoActive, setVideoActive] = useState<boolean>(true);
@@ -17,6 +18,7 @@ const AdminIndex: React.FC = () => {
                             setUserActive(false);
                         }}
                     >
+                        <IonIcon icon={videocamOutline} />
                         <IonLabel>Vidoes</IonLabel>
                     </IonSegmentButton>
                     <IonSegmentButton
@@ -26,6 +28,7 @@ const AdminIndex: React.FC = () => {
                             setUserActive(true);
                         }}
                     >
+                        <IonIcon icon={personCircleOutline} />
                         <IonLabel>Users</IonLabel>
                     </IonSegmentButton>
                 </IonSegment>

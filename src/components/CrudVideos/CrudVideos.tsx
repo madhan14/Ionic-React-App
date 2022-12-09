@@ -1,4 +1,4 @@
-import { IonItem, IonList, IonLabel, IonIcon } from "@ionic/react";
+import { IonItem, IonList, IonLabel, IonIcon, useIonAlert } from "@ionic/react";
 import { useState } from "react";
 import React from 'react';
 import axios from 'axios';
@@ -8,6 +8,7 @@ import { create, trash } from 'ionicons/icons';
 const CrudVideos = () => {
     
     const [ listItems, setListItems ] = useState<any>([]);
+    const [presentAlert] = useIonAlert();
 
     React.useEffect(() => {
         sendRequest().then((data: any) => {
@@ -28,6 +29,22 @@ const CrudVideos = () => {
                 return response.data;
             })
     };
+
+    const edVideo = (e: any) => {
+        console.log(e.target.id);
+        console.log(e.target.itemType);
+        if(e.target.itemType === 'edit'){
+            return (
+                <></>
+            );
+        }
+        if(e.target.itemType === 'delete'){
+            return (
+                <></>
+            );
+        }
+        
+    }
     return (
         <>
             <IonList>
@@ -38,8 +55,34 @@ const CrudVideos = () => {
                             return(
                                 <IonItem key={index} id={element.id}>
                                     <IonLabel>{element.fields.Title}</IonLabel>
-                                    <IonIcon color="primary" icon={create} />
-                                    <IonIcon color="danger" icon={trash} />
+                                    <IonIcon
+                                        color="primary"
+                                        icon={create}
+                                        itemType="edit"
+                                        id={element.id}
+                                        onClick={() => 
+                                            presentAlert({
+                                                header: 'Edit',
+                                                buttons: ['Update'],
+                                                inputs: [
+                                                    {
+                                                        label: 'Ttile',
+                                                        placeholder: 'Title',
+                                                    },
+                                                    {
+                                                        label: 'URL',
+                                                        placeholder: 'url',
+                                                    },
+                                                    {
+                                                        label: 'Active',
+                                                        type: 'checkbox',
+                                                        placeholder: 'Active'
+                                                    }
+                                                ],
+                                            })
+                                        }
+                                    />
+                                    <IonIcon color="danger" icon={trash} itemType="delete" id={element.id} onClick={(e) => edVideo(e)} />
                                 </IonItem> 
                             );
                         }
