@@ -6,10 +6,7 @@ import { ErrorMessage } from '@hookform/error-message';
 import { env } from '../../pages/env/env';
 
 const RegisterComponents: React.FC = () => {
-    const {
-        handleSubmit, register, formState: { errors } } = useForm({
-         
-        });
+    const { handleSubmit, register, formState: { errors } } = useForm({});
     
         // console.log(errors);
         // console.log(getValues());
@@ -18,34 +15,34 @@ const RegisterComponents: React.FC = () => {
          *
          * @param data
          */
-        const onSubmit = (userData: any) => {
-          console.log(userData);
-          let userEmail = userData.email;
-          let userPwd =  userData.password;
-          fetch(env.user_url, {
+    const onSubmit = (userData: any) => {
+        console.log(userData);
+        let userEmail = userData.email;
+        let userPwd =  userData.password;
+        fetch(env.user_url, {
             method: 'GET',
             headers: {
                 "Authorization": "Bearer "+env.list_user
             },
             redirect: 'follow'
-          })
-           .then(response => response.text())
-           .then(result => {
-                var data = JSON.parse(result);
-                // var data = result;
-                // console.log(data);
-                // console.log(data.records);
-                for(var i=0; i<data.records.length; i++){
-                    var email = data.records[i].fields.email;
-                    var pwd = data.records[i].fields.pwd;
-                    if(userEmail === email && userPwd === pwd){
-                        window.location.href = '/adminIndex'
-                        // alert('success');
-                    }
+        })
+        .then(response => response.text())
+        .then(result => {
+            var data = JSON.parse(result);
+            // var data = result;
+            // console.log(data);
+            // console.log(data.records);
+            for(var i=0; i<data.records.length; i++){
+                var email = data.records[i].fields.email;
+                var pwd = data.records[i].fields.pwd;
+                if(userEmail === email && userPwd === pwd){
+                    window.location.href = '/adminIndex'
+                    // alert('success');
                 }
-            })
-           .then(error => console.log('error', error))
-        };
+            }
+        })
+        .then(error => console.log('error', error))
+    };
     return (
         <>
             <div className="container">

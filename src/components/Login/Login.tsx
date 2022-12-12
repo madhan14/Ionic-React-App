@@ -26,8 +26,8 @@ import { useForm, Controller } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 
 const App: React.FunctionComponent = () => {
-  const {
-    handleSubmit, control, setValue, register, getValues, formState: { errors } } = useForm({
+  const { handleSubmit, control, setValue, register, getValues, formState: { errors } } = useForm(
+    {
       defaultValues: {
         rangeInfo: 150,
         gender: 'MALE',
@@ -37,7 +37,8 @@ const App: React.FunctionComponent = () => {
         radioGrp: 'biff',
         startDate: '2021-8'
       }
-    });
+    }
+  );
 
     console.log(errors);
     console.log(getValues());

@@ -1,10 +1,13 @@
-import { IonItem, IonList, IonLabel, IonIcon, IonModal, IonContent, IonTitle, IonToolbar, IonButtons, IonButton, IonAvatar, IonImg } from "@ionic/react";
+import { IonItem, IonList, IonLabel, IonIcon, IonModal, IonContent, IonTitle, IonToolbar, IonButtons, IonButton, IonInput, IonImg } from "@ionic/react";
 import { useState, useRef } from "react";
 import React from 'react';
 import axios from 'axios';
 import { env } from '../../pages/env/env';
 import { create, trash } from "ionicons/icons";
+import { useForm } from 'react-hook-form';
+import { ErrorMessage } from '@hookform/error-message';
 import './CRUD.css';
+import FORM from "../Form/Form";
 
 const CRUD = (video: any) => {
     const [ listItems, setListItems ] = useState<any>([]);
@@ -13,7 +16,7 @@ const CRUD = (video: any) => {
 
     function dismiss() {
         console.log('close')
-        modal.current?.dismiss();
+        modal.current?.dismiss(true);
     }
 
     React.useEffect(() => {
@@ -71,11 +74,11 @@ const CRUD = (video: any) => {
                                         <IonToolbar>
                                             <IonTitle>Modal</IonTitle>
                                             <IonButtons slot="end">
-                                                <IonButton color="dark" onClick={() => modal.current?.dismiss()}>Close</IonButton>
+                                                <IonButton color="dark" onClick={() => dismiss()}>Close</IonButton>
                                             </IonButtons>
                                         </IonToolbar>
                                         <IonList>
-                                            <IonItem>
+                                            {/* <IonItem>
                                                 <IonAvatar slot="start">
                                                     <IonImg src="https://i.pravatar.cc/300?u=b" />
                                                 </IonAvatar>
@@ -110,7 +113,8 @@ const CRUD = (video: any) => {
                                                     <h2>Zoey Smith</h2>
                                                     <p>CEO</p>
                                                 </IonLabel>
-                                            </IonItem>
+                                            </IonItem> */}
+                                            <FORM element={element}/>
                                         </IonList>
                                     </IonContent>
                                 </IonModal>
