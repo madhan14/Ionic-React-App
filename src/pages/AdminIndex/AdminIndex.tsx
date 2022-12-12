@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { IonLabel, IonSegment, IonSegmentButton, IonPage, IonContent, IonIcon } from "@ionic/react";
-import CrudVideos from "../../components/CrudVideos/CrudVideos";
-import CrudUser from "../../components/CrudUsers/CrudUsers";
+import CRUD from "../../components/CRUD/CRUD";
 import { personCircleOutline, videocamOutline } from "ionicons/icons";
 
 const AdminIndex: React.FC = () => {
@@ -33,7 +32,7 @@ const AdminIndex: React.FC = () => {
                     </IonSegmentButton>
                 </IonSegment>
                 <IonContent>
-                    { userActive ? <CrudUser /> : <CrudVideos /> }
+                    <CRUD video={videoActive} user={userActive} />
                 </IonContent>
             </IonPage>
             
