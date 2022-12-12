@@ -1,9 +1,7 @@
 import React from 'react';
 import {
   IonApp,
-  IonIcon,
   IonLabel,
-  IonDatetime,
   IonBackButton,
   IonButtons,
   IonButton,
@@ -16,7 +14,6 @@ import {
   IonItem,
   IonInput,
   IonRadioGroup,
-  IonListHeader,
   IonRadio,
   IonCheckbox,
   IonSelect,

@@ -7,9 +7,7 @@ import { env } from '../../pages/env/env';
 
 const RegisterComponents: React.FC = () => {
     const {
-        handleSubmit, control, setValue, register, formState: { errors } } = useForm({
-         
-        });
+        handleSubmit, control, setValue, register, formState: { errors } } = useForm({});
     
         // console.log(errors);
         // console.log(getValues());
@@ -22,8 +20,10 @@ const RegisterComponents: React.FC = () => {
             console.log(userData);
 
             if(!userData.active){
+                // eslint-disable-next-line
                 var status = 'inActive';
             } else {
+                // eslint-disable-next-line
                 var status = 'active';
             }
             var inputData = JSON.stringify({
