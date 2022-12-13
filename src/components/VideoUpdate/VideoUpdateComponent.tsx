@@ -6,8 +6,7 @@ import { ErrorMessage } from '@hookform/error-message';
 import { env } from '../../pages/env/env';
 
 const RegisterComponents: React.FC = () => {
-    const {
-        handleSubmit, control, setValue, register, formState: { errors } } = useForm({});
+    const { handleSubmit, control, setValue, register, formState: { errors } } = useForm({});
     
         // console.log(errors);
         // console.log(getValues());

@@ -5,5 +5,5 @@ export const env = {
     
     video_url : 'https://api.airtable.com/v0/appoWhRvLK7iOlxJY/videos',
     list_videos: 'pat5xxuQ6KRHHR0hr.67219bb3c5e8969093f950e639c5a6a1f5150bbe36c4007d7381ce48be6b275a',
-    ced_videos: 'patziCaJZxsMtQJNS.66953a25bb7439b903c04ac455c375a12109122adf2c1886d53dccf4445a5b7b'
+    ced_videos: 'pat71sJ2neDydUFSr.52583d72862171272bf7de8e2961ff8ae50bb0c5ed7bf5fbd03ae839d6f9348b'
 }

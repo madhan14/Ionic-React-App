@@ -1,22 +1,20 @@
-import { IonItem, IonList, IonLabel, IonIcon, IonModal, IonContent, IonTitle, IonToolbar, IonButtons, IonButton, IonInput, IonImg } from "@ionic/react";
+import { IonItem, IonList, IonLabel, IonIcon, IonModal, IonContent, IonTitle, IonToolbar, IonButtons, IonButton } from "@ionic/react";
 import { useState, useRef } from "react";
 import React from 'react';
 import axios from 'axios';
 import { env } from '../../pages/env/env';
 import { create, trash } from "ionicons/icons";
-import { useForm } from 'react-hook-form';
-import { ErrorMessage } from '@hookform/error-message';
 import './CRUD.css';
 import FORM from "../Form/Form";
 
 const CRUD = (video: any) => {
     const [ listItems, setListItems ] = useState<any>([]);
 
-    const modal = useRef<HTMLIonModalElement>(null);
+    const modal = useRef<HTMLIonModalElement | null>(null);
 
     function dismiss() {
         console.log('close')
-        modal.current?.dismiss(true);
+        modal.current?.dismiss();
     }
 
     React.useEffect(() => {
@@ -114,7 +112,7 @@ const CRUD = (video: any) => {
                                                     <p>CEO</p>
                                                 </IonLabel>
                                             </IonItem> */}
-                                            <FORM element={element}/>
+                                            <FORM element={element} type={video}/>
                                         </IonList>
                                     </IonContent>
                                 </IonModal>

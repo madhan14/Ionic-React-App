@@ -1,66 +1,171 @@
-import { IonItem, IonList, IonLabel, IonIcon, IonModal, IonContent, IonTitle, IonToolbar, IonButtons, IonButton, IonInput, IonImg } from "@ionic/react";
+import { IonItem, IonLabel, IonButton, IonInput, IonToggle } from "@ionic/react";
 import React from 'react';
-import axios from 'axios';
 import { env } from '../../pages/env/env';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
+import './Form.css';
 
 const FORM = (element: any) => {
     console.log(element);
-    const { handleSubmit, register, formState: { errors } } = useForm(
+    const { handleSubmit, control, setValue, register, formState: { errors } } = useForm(
         {
             defaultValues: {
-                email: 'test',
-                password: ''
+                email: element.type.user === true ? element.element.fields.email : '',
+                password: '',
+                title: element.type.user === false ? element.element.fields.Title : '',
+                url:  element.type.user === false ? element.element.fields.url : '',
+                Active: element.type.user === false ? element.element.fields.active : '',
+                id: element.element.id,
             }
         }
     );
-    const onSubmit = (userData: any) => {
+    const onSubmitUser = (userData: any) => {
         console.log(userData);
     }
-    return (
-        <form  onSubmit={handleSubmit(onSubmit)}>
-            <IonItem>
-                <IonLabel>Email</IonLabel>
-                <IonInput
-                    {
-                        ...register('email', {
-                            required: 'Email is a required',
-                            pattern: {
-                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                                message: 'invalid email address'
-                            }
-                        })
-                    }
+    const onSubmitVideo = (userData: any) => {
+        var UpdateData = JSON.stringify({
+            "fields": {
+                "Title": userData.title,
+                "url": userData.url,
+                "active": String(userData.Active)
+            }
+        });
+        fetch(env.video_url+'/'+userData.id, {
+            method: 'PUT',
+            headers: {
+                "Authorization": "Bearer "+env.ced_videos,
+                "Content-Type": "application/json"
+            },
+            body: UpdateData,
+            redirect: 'follow'
+        })
+        .then(response => response.json())
+        .then(result => {
+            if(result.id){
+
+            }
+        })
+        .then(error => console.log('error', error))
+    }
+    if(element.type.video === true){
+        return (
+            <form id={element.element.id} onSubmit={handleSubmit(onSubmitVideo)}>
+                <IonItem>
+                    <IonLabel>Title</IonLabel>
+                    <IonInput
+                        {
+                            ...register('title', {
+                                required: 'Title is required',
+                                pattern: {
+                                    value: /[A-Za-z]/gm,
+                                    message: 'invalid title'
+                                }
+                            })
+                        }
+                    />
+                </IonItem>
+                <ErrorMessage
+                    errors={errors}
+                    name="title"
+                    as={<div style={{ color: 'red' }} />}
                 />
-            </IonItem>
-            <ErrorMessage
-            errors={errors}
-            name="email"
-            as={<div style={{ color: 'red' }} />}
-            />
-            <IonItem>
-                <IonLabel>Password</IonLabel>
-                <IonInput type="password"
+                <IonItem>
+                    <IonLabel>URL</IonLabel>
+                    <IonInput type="url"
+                        {
+                            ...register('url', {
+                                required: 'URL is required',
+                                pattern: {
+                                    value: /[a-zA-Z]/gm,
+                                    message: 'URL is invalid address'
+                                }
+                            })
+                        }
+                    />
+                </IonItem>
+                <ErrorMessage
+                    errors={errors}
+                    name="url"
+                    as={<div style={{ color: 'red' }} />}
+                />
+                <IonItem>
+                    <IonLabel>Active</IonLabel>
+                    <Controller
+                        name="Active"
+                        control={control}
+                        render={({ field }) => {
+                            return (
+                                <IonToggle
+                                    checked={field.value}
+                                    onIonChange={e => {
+                                        setValue('Active', e.detail.checked);
+                                    }}
+                                />
+                            );
+                        }}
+                    />  
+                </IonItem>
+                <IonInput id="id"
                     {
-                        ...register('password', {
-                            required: 'password is a required',
+                        ...register('id', {
+                            required: 'Id is required',
                             pattern: {
                                 value: /[a-zA-Z]/gm,
-                                message: 'password is invalid address'
+                                message: ''
                             }
                         })
                     }
                 />
-            </IonItem>
-            <ErrorMessage
-            errors={errors}
-            name="password"
-            as={<div style={{ color: 'red' }} />}
-            />
-            <IonButton type="submit">submit</IonButton>
-        </form>
-    );
+                <IonButton type="submit">submit</IonButton>
+            </form>
+        );
+        
+    } else {
+        return (
+            <form id={element.element.id} onSubmit={handleSubmit(onSubmitUser)}>
+                <IonItem>
+                    <IonLabel>Email</IonLabel>
+                    <IonInput
+                        {
+                            ...register('email', {
+                                required: 'Email is a required',
+                                pattern: {
+                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                                    message: 'invalid email address'
+                                }
+                            })
+                        }
+                    />
+                </IonItem>
+                <ErrorMessage
+                errors={errors}
+                name="email"
+                as={<div style={{ color: 'red' }} />}
+                />
+                <IonItem>
+                    <IonLabel>Password</IonLabel>
+                    <IonInput type="password"
+                        {
+                            ...register('password', {
+                                required: 'password is a required',
+                                pattern: {
+                                    value: /[a-zA-Z]/gm,
+                                    message: 'password is invalid address'
+                                }
+                            })
+                        }
+                    />
+                </IonItem>
+                <ErrorMessage
+                errors={errors}
+                name="password"
+                as={<div style={{ color: 'red' }} />}
+                />
+                <IonButton type="submit">submit</IonButton>
+            </form>
+        );
+
+    }
 }
 
 export default FORM;

@@ -45,7 +45,7 @@ const Index: React.FC = () => {
                             {
                                 // eslint-disable-next-line
                                 listItems.map((element: any, index: any) => {
-                                    if(element.fields.active === "Active"){
+                                    if(element.fields.active === "true"){
                                     return(
                                         <IonCol key={index}>
                                             <iframe title={element.fields.Title} src={element.fields.url} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>                                                    
