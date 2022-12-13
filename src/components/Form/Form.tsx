@@ -1,9 +1,11 @@
-import { IonItem, IonLabel, IonButton, IonInput, IonToggle } from "@ionic/react";
+import { IonItem, IonLabel, IonButton, IonInput, IonToggle, useIonToast } from "@ionic/react";
 import React from 'react';
 import { env } from '../../pages/env/env';
 import { useForm, Controller } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import './Form.css';
+import { checkmarkDoneOutline } from "ionicons/icons";
+import { setTimeout } from "timers";
 
 const FORM = (element: any) => {
     console.log(element);
@@ -19,6 +21,8 @@ const FORM = (element: any) => {
             }
         }
     );
+    const [presentToast] = useIonToast();
+
     const onSubmitUser = (userData: any) => {
         console.log(userData);
     }
@@ -30,6 +34,10 @@ const FORM = (element: any) => {
                 "active": String(userData.Active)
             }
         });
+                
+        const reload = () => {
+            window.location.href = '/adminIndex'
+        }
         fetch(env.video_url+'/'+userData.id, {
             method: 'PUT',
             headers: {
@@ -41,8 +49,17 @@ const FORM = (element: any) => {
         })
         .then(response => response.json())
         .then(result => {
+            console.log(result)
+            console.log(result.id)
             if(result.id){
-
+                presentToast({
+                    message: 'Updated!',
+                    duration: 1000,
+                    icon: checkmarkDoneOutline,
+                    position: "top",
+                    cssClass: 'success',
+                    onDidDismiss: reload
+                })
             }
         })
         .then(error => console.log('error', error))
@@ -103,19 +120,20 @@ const FORM = (element: any) => {
                                 />
                             );
                         }}
-                    />  
+                    />
+                    <IonInput id="id"
+                        {
+                            ...register('id', {
+                                required: 'Id is required',
+                                pattern: {
+                                    value: /[a-zA-Z]/gm,
+                                    message: ''
+                                }
+                            })
+                        }
+                    />
                 </IonItem>
-                <IonInput id="id"
-                    {
-                        ...register('id', {
-                            required: 'Id is required',
-                            pattern: {
-                                value: /[a-zA-Z]/gm,
-                                message: ''
-                            }
-                        })
-                    }
-                />
+                
                 <IonButton type="submit">submit</IonButton>
             </form>
         );
