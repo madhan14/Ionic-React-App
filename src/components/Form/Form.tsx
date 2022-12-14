@@ -5,7 +5,6 @@ import { useForm, Controller } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import './Form.css';
 import { checkmarkDoneOutline } from "ionicons/icons";
-import { setTimeout } from "timers";
 
 const FORM = (element: any) => {
     console.log(element);
@@ -137,7 +136,6 @@ const FORM = (element: any) => {
                 <IonButton type="submit">submit</IonButton>
             </form>
         );
-        
     } else {
         return (
             <form id={element.element.id} onSubmit={handleSubmit(onSubmitUser)}>
@@ -156,9 +154,9 @@ const FORM = (element: any) => {
                     />
                 </IonItem>
                 <ErrorMessage
-                errors={errors}
-                name="email"
-                as={<div style={{ color: 'red' }} />}
+                    errors={errors}
+                    name="email"
+                    as={<div style={{ color: 'red' }} />}
                 />
                 <IonItem>
                     <IonLabel>Password</IonLabel>
@@ -175,9 +173,9 @@ const FORM = (element: any) => {
                     />
                 </IonItem>
                 <ErrorMessage
-                errors={errors}
-                name="password"
-                as={<div style={{ color: 'red' }} />}
+                    errors={errors}
+                    name="password"
+                    as={<div style={{ color: 'red' }} />}
                 />
                 <IonButton type="submit">submit</IonButton>
             </form>
