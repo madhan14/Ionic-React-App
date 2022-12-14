@@ -1,21 +1,14 @@
-import { IonItem, IonList, IonLabel, IonIcon, IonModal, IonContent, IonTitle, IonToolbar, IonButtons, IonButton } from "@ionic/react";
-import { useState, useRef } from "react";
+import { IonItem, IonList, IonLabel, IonIcon } from "@ionic/react";
+import { useState } from "react";
 import React from 'react';
 import axios from 'axios';
 import { env } from '../../pages/env/env';
-import { create, trash } from "ionicons/icons";
+import { trash } from "ionicons/icons";
 import './CRUD.css';
-import FORM from "../Form/Form";
+import MODAL from "../Modal/Modal";
 
 const CRUD = (video: any) => {
     const [ listItems, setListItems ] = useState<any>([]);
-
-    const modal = useRef<HTMLIonModalElement | null>(null);
-
-    function dismiss() {
-        console.log('close')
-        modal.current?.dismiss();
-    }
 
     React.useEffect(() => {
         if(video.video === false){
@@ -26,7 +19,6 @@ const CRUD = (video: any) => {
     }, [video]);
 
     const sendRequest = async(fetchUrl: string, fetchToken: string) => {
-
         return await axios.get(fetchUrl, {
                 method: 'GET',
                 headers: {
@@ -38,18 +30,6 @@ const CRUD = (video: any) => {
                 setListItems(response.data.records)
             })
     };
-
-    const edVideo = (e: any) => {
-        console.log(e.target.id);
-        console.log(e.target.itemType);
-        if(e.target.itemType === 'edit'){
-            
-        }
-        if(e.target.itemType === 'delete'){
-            
-        }
-        
-    }
 
     return (
         <>
@@ -66,21 +46,8 @@ const CRUD = (video: any) => {
                         return(
                             <IonItem key={index} id={element.id}>
                                 <IonLabel>{label}</IonLabel>
-                                <IonIcon color="primary" icon={create} itemType="edit" id={element.id} onClick={(e) => edVideo(e)} />
-                                <IonModal id="modal" ref={modal} trigger={element.id}>
-                                    <IonContent>
-                                        <IonToolbar>
-                                            <IonTitle>Modal</IonTitle>
-                                            <IonButtons slot="end">
-                                                <IonButton color="dark" onClick={() => dismiss()}>Close</IonButton>
-                                            </IonButtons>
-                                        </IonToolbar>
-                                        <IonList>
-                                            <FORM element={element} type={video}/>
-                                        </IonList>
-                                    </IonContent>
-                                </IonModal>
-                                <IonIcon color="danger" icon={trash} itemType="delete" id={element.id} onClick={(e) => edVideo(e)} />
+                                <MODAL element={element} type={video} />
+                                <IonIcon color="danger" icon={trash} itemType="delete" id={element.id} />
                             </IonItem>
                         );
                     })
