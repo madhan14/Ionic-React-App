@@ -5,7 +5,7 @@ import axios from 'axios';
 import { env } from '../../pages/env/env';
 import './CRUD.css';
 import MODAL from "../Modal/Modal";
-import Create from "../Modal/CreateModal";
+import Create from "../Form/CreateForm";
 
 const CRUD = (video: any) => {
     const [ listItems, setListItems ] = useState<any>([]);

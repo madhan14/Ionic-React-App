@@ -55,25 +55,35 @@ const Create = (props: any) => {
     }
 
     const onSubmitVideo = (userData: any) => {
-        // console.log(userData);
-        var status;
+        console.log(userData);
+        var status, url;
         if(userData.Active === undefined){
             status = 'false'
         } else {
             status = 'true'
         }
+
+        if(userData.url.includes('watch')){
+            url = 'https://www.youtube.com/embed/'+userData.url.split('=')[1]
+        } else if(userData.url.includes('youtu.be')){
+            url = 'https://www.youtube.com/embed/'+userData.url.split('youtu.be/')[1]
+        } else {
+            url = userData.url
+        }
+
+        console.log(url);
         var newRecord = {
             "records": [
                 {
                     "fields": {
                         'Title': userData.title,
-                        "url": userData.url,
+                        "url": url,
                         "active": status
                     }
                 }
             ]
         }
-
+        console.log(newRecord)
         fetch(env.video_url, {
             method: 'POST',
             headers: {
