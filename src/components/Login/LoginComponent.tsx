@@ -1,6 +1,6 @@
 import './LoginComponent.css';
 import React from 'react';
-import { IonItem, IonList, IonLabel, IonInput, IonButton } from '@ionic/react';
+import { IonItem, IonList, IonLabel, IonInput, IonButton, useIonToast } from '@ionic/react';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import { env } from '../../pages/env/env';
@@ -15,8 +15,10 @@ const RegisterComponents: React.FC = () => {
          *
          * @param data
          */
+    const [alertToast] = useIonToast();
+
     const onSubmit = (userData: any) => {
-        console.log(userData);
+        // console.log(userData);
         let userEmail = userData.email;
         let userPwd =  userData.password;
         fetch(env.user_url, {
@@ -31,15 +33,18 @@ const RegisterComponents: React.FC = () => {
             var data = JSON.parse(result);
             // var data = result;
             // console.log(data);
-            // console.log(data.records);
-            for(var i=0; i<data.records.length; i++){
-                var email = data.records[i].fields.email;
-                var pwd = data.records[i].fields.pwd;
-                if(userEmail === email && userPwd === pwd){
+            console.log(data.records);
+            data.records.forEach((records: any) => {
+                if(records.fields.email == userEmail && records.fields.pwd == userPwd){
                     window.location.href = '/adminIndex'
-                    // alert('success');
+                } else {
+                    alertToast({
+                        message: 'Username or Password is wrong',
+                        duration: 2000,
+                        position: 'top'
+                    })
                 }
-            }
+            });
         })
         .then(error => console.log('error', error))
     };
