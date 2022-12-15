@@ -1,11 +1,10 @@
-import { IonItem, IonList, IonLabel, IonIcon } from "@ionic/react";
-import { useState } from "react";
-import React from 'react';
+import { IonItem, IonList, IonLabel } from "@ionic/react";
+import React, { useState } from 'react';
 import axios from 'axios';
 import { env } from '../../pages/env/env';
-import { trash } from "ionicons/icons";
 import './CRUD.css';
 import MODAL from "../Modal/Modal";
+import Create from "../Modal/CreateModal";
 
 const CRUD = (video: any) => {
     const [ listItems, setListItems ] = useState<any>([]);
@@ -31,9 +30,9 @@ const CRUD = (video: any) => {
             })
     };
 
-    const remove = (e: any) => {
-        console.log(e)
-    }
+    // const remove = (e: any) => {
+    //     console.log(e)
+    // }
 
     return (
         <>
@@ -51,12 +50,13 @@ const CRUD = (video: any) => {
                             <IonItem key={index} id={element.id}>
                                 <IonLabel>{label}</IonLabel>
                                 <MODAL element={element} type={video} />
-                                <IonIcon color="danger" icon={trash} itemType="delete" onClick={(e) => remove(e)} />
+                                {/* <IonIcon color="danger" icon={trash} itemType="delete" onClick={(e) => remove(e)} /> */}
                             </IonItem>
                         );
                     })
                 }
             </IonList>
+            <Create type={video} />
         </>
     );
 };

@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import { IonIcon, IonModal, IonContent, IonToolbar, IonTitle, IonButtons, IonButton, IonList } from "@ionic/react"
-import { create } from "ionicons/icons";
-import { useRef } from "react";
+import { create, closeOutline } from "ionicons/icons";
 import FORM from "../Form/Form";
 
 const MODAL = (props: any) => {
@@ -18,9 +17,11 @@ const MODAL = (props: any) => {
             <IonModal id="modal" ref={modal} trigger={props.element.id}>
                 <IonContent>
                     <IonToolbar>
-                        <IonTitle>Modal</IonTitle>
+                        <IonTitle>Edit</IonTitle>
                         <IonButtons slot="end">
-                            <IonButton color="dark" onClick={() => dismiss()}>Close</IonButton>
+                            <IonButton color="dark" onClick={() => dismiss()}>
+                                <IonIcon icon={closeOutline} />
+                            </IonButton>
                         </IonButtons>
                     </IonToolbar>
                     <IonList>

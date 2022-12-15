@@ -5,7 +5,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import './Form.css';
 import { checkmarkDoneOutline } from "ionicons/icons";
-var Crypto = require('crypto-js');
+// var Crypto = require('crypto-js');
 
 const FORM = (element: any) => {
     // console.log(element);
@@ -199,7 +199,7 @@ const FORM = (element: any) => {
                             ...register('password', {
                                 required: 'password is a required',
                                 pattern: {
-                                    value: /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$/gm   ,
+                                    value: /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$/gm,
                                     message: 'password has min 6 character, atleast 1 uppercase, 1 lowercase letter, and 1 number with no spaces'
                                 }
                             })
