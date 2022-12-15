@@ -101,7 +101,7 @@ const FORM = (element: any) => {
         return (
             <form id={element.element.id} onSubmit={handleSubmit(onSubmitVideo)}>
                 <IonItem>
-                    <IonLabel>Title</IonLabel>
+                    <IonLabel>Title: </IonLabel>
                     <IonInput
                         {
                             ...register('title', {
@@ -120,7 +120,7 @@ const FORM = (element: any) => {
                     as={<div style={{ color: 'red' }} />}
                 />
                 <IonItem>
-                    <IonLabel>URL</IonLabel>
+                    <IonLabel>URL: </IonLabel>
                     <IonInput type="url"
                         {
                             ...register('url', {
@@ -139,7 +139,7 @@ const FORM = (element: any) => {
                     as={<div style={{ color: 'red' }} />}
                 />
                 <IonItem>
-                    <IonLabel>Active</IonLabel>
+                    <IonLabel>Active: </IonLabel>
                     <Controller
                         name="Active"
                         control={control}
@@ -174,7 +174,7 @@ const FORM = (element: any) => {
         return (
             <form id={element.element.id} onSubmit={handleSubmit(onSubmitUser)}>
                 <IonItem>
-                    <IonLabel>Email</IonLabel>
+                    <IonLabel>Email: </IonLabel>
                     <IonInput
                         {
                             ...register('email', {
@@ -193,7 +193,7 @@ const FORM = (element: any) => {
                     as={<div style={{ color: 'red' }} />}
                 />
                 <IonItem>
-                    <IonLabel>Password</IonLabel>
+                    <IonLabel>Password: </IonLabel>
                     <IonInput type="password"
                         {
                             ...register('password', {

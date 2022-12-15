@@ -31,6 +31,10 @@ const CRUD = (video: any) => {
             })
     };
 
+    const remove = (e: any) => {
+        console.log(e)
+    }
+
     return (
         <>
             <IonList>
@@ -47,7 +51,7 @@ const CRUD = (video: any) => {
                             <IonItem key={index} id={element.id}>
                                 <IonLabel>{label}</IonLabel>
                                 <MODAL element={element} type={video} />
-                                <IonIcon color="danger" icon={trash} itemType="delete" id={element.id} />
+                                <IonIcon color="danger" icon={trash} itemType="delete" onClick={(e) => remove(e)} />
                             </IonItem>
                         );
                     })
