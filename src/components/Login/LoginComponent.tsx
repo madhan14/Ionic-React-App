@@ -35,7 +35,7 @@ const RegisterComponents: React.FC = () => {
             // console.log(data);
             console.log(data.records);
             data.records.forEach((records: any) => {
-                if(records.fields.email == userEmail && records.fields.pwd == userPwd){
+                if(records.fields.email === userEmail && records.fields.pwd === userPwd){
                     window.location.href = '/adminIndex'
                 } else {
                     alertToast({
