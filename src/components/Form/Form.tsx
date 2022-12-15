@@ -60,6 +60,7 @@ const FORM = (element: any) => {
                 })
             }
         })
+        .then(error => console.log('error', error))
     }
     const onSubmitVideo = (userData: any) => {
         var UpdateVideo = JSON.stringify({

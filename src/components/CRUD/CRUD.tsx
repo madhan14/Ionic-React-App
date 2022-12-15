@@ -1,5 +1,6 @@
-import { IonItem, IonList, IonLabel } from "@ionic/react";
-import React, { useState } from 'react';
+import { IonItem, IonList, IonLabel, IonFab, IonFabButton, IonIcon, IonModal, IonContent, IonToolbar, IonTitle, IonButtons, IonButton } from "@ionic/react";
+import { add, closeOutline } from "ionicons/icons";
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { env } from '../../pages/env/env';
 import './CRUD.css';
@@ -8,7 +9,7 @@ import Create from "../Modal/CreateModal";
 
 const CRUD = (video: any) => {
     const [ listItems, setListItems ] = useState<any>([]);
-
+    const modal = useRef<HTMLIonModalElement>(null);
     React.useEffect(() => {
         if(video.video === false){
             sendRequest(env.user_url, env.list_user)
@@ -56,7 +57,27 @@ const CRUD = (video: any) => {
                     })
                 }
             </IonList>
-            <Create type={video} />
+            <IonFab slot="fixed" vertical="bottom" horizontal="end">
+                <IonFabButton id="create">
+                    <IonIcon icon={add} />
+                </IonFabButton>
+                <IonModal ref={modal} id="modal" trigger="create">
+                    <IonContent>
+                        <IonToolbar>
+                            <IonTitle>Create</IonTitle>
+                            <IonButtons slot="end">
+                                <IonButton color="light" onClick={() => modal.current?.dismiss()}>
+                                    <IonIcon slot="icon-only" icon={closeOutline}  onClick={() => modal.current?.dismiss()} />
+                                </IonButton>
+                            </IonButtons>
+                        </IonToolbar>
+                        <IonList>
+                            <Create type={video} />
+                        </IonList>
+                    </IonContent>
+                </IonModal>
+            </IonFab>
+            {/* <Create type={video} /> */}
         </>
     );
 };
