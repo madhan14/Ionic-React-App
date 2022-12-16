@@ -16,14 +16,20 @@ const Create = (props: any) => {
     }
 
     const onSubmitUser = (userData: any) => {
-        console.log(userData);
-
+        // console.log(userData);
+        var admin;
+        if(userData.Admin === undefined){
+            admin = 'false'
+        } else {
+            admin = 'true'
+        }
         var newRecord = {
             "records": [
                 {
                     "fields": {
                         'email': userData.email,
-                        "pwd": userData.password
+                        "pwd": userData.password,
+                        "isAdmin": admin
                     }
                 }
             ]
@@ -211,6 +217,23 @@ const Create = (props: any) => {
                     name="password"
                     as={<div style={{ color: 'red' }} />}
                 />
+                <IonItem>
+                    <IonLabel>Admin: </IonLabel>
+                    <Controller
+                        name="Admin"
+                        control={control}
+                        render={({ field }) => {
+                            return (
+                                <IonToggle
+                                    checked={field.value}
+                                    onIonChange={e => {
+                                        setValue('Admin', e.detail.checked);
+                                    }}
+                                />
+                            );
+                        }}
+                    />
+                </IonItem>
                 <IonButton type="submit">submit</IonButton>
         </form>
         );

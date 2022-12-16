@@ -36,7 +36,9 @@ const RegisterComponents: React.FC = () => {
             console.log(data.records);
             data.records.forEach((records: any) => {
                 if(records.fields.email === userEmail && records.fields.pwd === userPwd){
-                    window.location.href = '/adminIndex'
+                    localStorage.setItem("email", records.fields.email);
+                    localStorage.setItem("isAdmin", records.fields.isAdmin);
+                    window.location.href = '/Index'
                 } else {
                     alertToast({
                         message: 'Username or Password is wrong',
@@ -56,7 +58,7 @@ const RegisterComponents: React.FC = () => {
                 <IonList>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <IonItem>
-                            <IonLabel>Email</IonLabel>
+                            <IonLabel>Email: </IonLabel>
                             <IonInput
                                 {
                                     ...register('email', {
@@ -75,7 +77,7 @@ const RegisterComponents: React.FC = () => {
                             as={<div style={{ color: 'red' }} />}
                             />
                         <IonItem>
-                            <IonLabel>Password</IonLabel>
+                            <IonLabel>Password: </IonLabel>
                             <IonInput type="password"
                                 {
                                     ...register('password', {

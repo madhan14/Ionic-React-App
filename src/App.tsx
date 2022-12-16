@@ -43,34 +43,11 @@ setupIonicReact();
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      {/* <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/Home">
-            <Tab1 />
-          </Route>
-          <Route exact path="/profile">
-            <Tab2 />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/Home" />
-          </Route>
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="Home" href="/Home">
-            <IonIcon icon={home} />
-            <IonLabel>Home</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="profile" href="/profile">
-            <IonIcon icon={personCircle} />
-            <IonLabel>Profile</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs> */}
       <IonRouterOutlet>
-        <Route exact path="/">
+        <Route exact path="/Index">
           <Index />
         </Route>
-        <Route exact path="/login">
+        <Route exact path="/">
           <Login />
         </Route>
         <Route exact path="/register">

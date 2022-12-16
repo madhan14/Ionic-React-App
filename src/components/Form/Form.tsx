@@ -13,6 +13,7 @@ const FORM = (element: any) => {
         {
             defaultValues: {
                 email: element.type.user === true ? element.element.fields.email : '',
+                Admin: element.type.user === true ? element.element.fields.isAdmin : '',
                 password: '',
                 title: element.type.user === false ? element.element.fields.Title : '',
                 url:  element.type.user === false ? element.element.fields.url : '',
@@ -24,13 +25,15 @@ const FORM = (element: any) => {
     const [presentToast] = useIonToast();
 
     const onSubmitUser = (userData: any) => {
+        console.log(userData)
         // var encrypt = Crypto.AES.encrypt(userData.password, "Test#123").toString();
         // console.log("Encryption: "+encrypt)
         // console.log("Decryption: "+Crypto.AES.decrypt(encrypt, "Test#123").toString(Crypto.enc.Utf8))
         var UpdateUser = JSON.stringify({
             "fields": {
                 "email": userData.email,
-                "pwd": userData.password
+                "pwd": userData.password,
+                "isAdmin": String(userData.Admin)
             }
         });
 
@@ -168,7 +171,7 @@ const FORM = (element: any) => {
                     />
                 </IonItem>
                 
-                <IonButton type="submit">submit</IonButton>
+                <IonButton type="submit">Update</IonButton>
             </form>
         );
     } else {
@@ -179,7 +182,7 @@ const FORM = (element: any) => {
                     <IonInput
                         {
                             ...register('email', {
-                                required: 'Email is a required',
+                                required: 'Require email',
                                 pattern: {
                                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
                                     message: 'invalid email address'
@@ -198,7 +201,7 @@ const FORM = (element: any) => {
                     <IonInput type="password"
                         {
                             ...register('password', {
-                                required: 'password is a required',
+                                required: 'Require password',
                                 pattern: {
                                     value: /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$/gm,
                                     message: 'password has min 6 character, atleast 1 uppercase, 1 lowercase letter, and 1 number with no spaces'
@@ -212,7 +215,35 @@ const FORM = (element: any) => {
                     name="password"
                     as={<div style={{ color: 'red' }} />}
                 />
-                <IonButton type="submit">submit</IonButton>
+                <IonItem>
+                    <IonLabel>Admin: </IonLabel>
+                    <Controller
+                        name="Admin"
+                        control={control}
+                        render={({ field }) => {
+                            return (
+                                <IonToggle
+                                    checked={field.value}
+                                    onIonChange={e => {
+                                        setValue('Admin', e.detail.checked);
+                                    }}
+                                />
+                            );
+                        }}
+                    />
+                    <IonInput id="id"
+                        {
+                            ...register('id', {
+                                required: 'Id is required',
+                                pattern: {
+                                    value: /[a-zA-Z]/gm,
+                                    message: ''
+                                }
+                            })
+                        }
+                    />
+                </IonItem>
+                <IonButton type="submit">Update</IonButton>
             </form>
         );
 
