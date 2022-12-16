@@ -1,19 +1,40 @@
-import {  IonContent, IonHeader, IonTitle,IonToolbar, IonPage, IonItem } from '@ionic/react';
+import {  IonContent, IonHeader, IonTitle,IonToolbar, IonPage, IonItem, useIonLoading, useIonViewDidEnter, useIonViewDidLeave, useIonViewWillEnter, useIonViewWillLeave } from '@ionic/react';
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import { env } from '../env/env';
+
 import './Index.css';
     
 const Index: React.FC = () => {
     const [ listItems, setListItems ] = useState<any>([]);
 
-    React.useEffect(() => {
-        sendRequest().then((data: any) => {
-            setListItems(data.records)
-        });
-    }, []);
+    const [preloader, preloaderDismiss] = useIonLoading();
+
+    useIonViewDidEnter(() => {
+        // console.log('ionViewDidEnter event fired');
+    });
     
+    useIonViewDidLeave(() => {
+        console.log('ionViewDidLeave event fired');
+    });
+    
+    useIonViewWillEnter(() => {
+        // console.log('ionViewWillEnter event fired');
+    });
+    
+    useIonViewWillLeave(() => {
+        console.log('ionViewWillLeave event fired');
+    });
+
+    React.useEffect(() => {
+        sendRequest()
+        .then((data: any) => {
+            setListItems(data.records)
+            
+        })
+    }, []);
+
     const sendRequest = () => {
         return axios
             .get(env.video_url, {
@@ -27,7 +48,12 @@ const Index: React.FC = () => {
                 return response.data;
             })
     };
-
+    
+    
+    if(localStorage.length === 0){
+        console.log(localStorage)
+        window.location.href = '/'
+    }
     return (
         <>
             <IonPage>
@@ -36,7 +62,7 @@ const Index: React.FC = () => {
                         <IonTitle>
                             Tamil Magan
                             {
-                                localStorage.getItem("isAdmin") === 'yes'? <a className="inline" href="/adminIndex">Edit</a> : ''
+                                localStorage.getItem("isAdmin") === 'true'? <a className="inline" href="/adminIndex">Edit</a> : ''
                             }
                         </IonTitle>
                     </IonToolbar>
@@ -44,10 +70,10 @@ const Index: React.FC = () => {
                 <IonContent>
                     {
                     // eslint-disable-next-line
-                        listItems.map((element: any, index: any) => {
+                        listItems?.map((element: any, index: any) => {
                             if(element.fields.active === "true"){
                                 return(
-                                    <IonItem key={index} lines="none">
+                                    <IonItem id={index} key={index} lines="none">
                                         <iframe title={element.fields.Title} src={element.fields.url} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>                                                    
                                     </IonItem>
                                 );

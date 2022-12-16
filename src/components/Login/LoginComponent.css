@@ -1,3 +1,7 @@
-.custom-link{
-    color: white;
+.container{
+    margin-top: 50%;
+}
+
+.container > h1, .btnCenter {
+    text-align: center;
 }

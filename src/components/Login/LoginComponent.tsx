@@ -1,24 +1,22 @@
 import './LoginComponent.css';
 import React from 'react';
-import { IonItem, IonList, IonLabel, IonInput, IonButton, useIonToast } from '@ionic/react';
+import { IonItem, IonList, IonLabel, IonInput, IonButton, useIonToast, useIonLoading } from '@ionic/react';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import { env } from '../../pages/env/env';
 
-const RegisterComponents: React.FC = () => {
+const LoginComponents: React.FC = () => {
     const { handleSubmit, register, formState: { errors } } = useForm({});
-    
-        // console.log(errors);
-        // console.log(getValues());
-    
-        /**
-         *
-         * @param data
-         */
-    const [alertToast] = useIonToast();
+    localStorage.clear();
+    const [ alertToast ] = useIonToast();
+    const [preloader, preloaderDismiss] = useIonLoading();
 
     const onSubmit = (userData: any) => {
         // console.log(userData);
+        preloader({
+            message: 'Please wait...',
+            spinner: 'lines'
+          })
         let userEmail = userData.email;
         let userPwd =  userData.password;
         fetch(env.user_url, {
@@ -40,8 +38,9 @@ const RegisterComponents: React.FC = () => {
                     localStorage.setItem("isAdmin", records.fields.isAdmin);
                     window.location.href = '/Index'
                 } else {
+                    preloaderDismiss();
                     alertToast({
-                        message: 'Username or Password is wrong',
+                        message: 'Email or Password is wrong',
                         duration: 2000,
                         position: 'top'
                     })
@@ -95,7 +94,9 @@ const RegisterComponents: React.FC = () => {
                           name="password"
                           as={<div style={{ color: 'red' }} />}
                         />
-                        <IonButton type="submit">submit</IonButton>
+                        <div className='btnCenter'>
+                            <IonButton type="submit">submit</IonButton>
+                        </div>
                     </form>
                 </IonList>
                 {/* <CustomLink message="Don't have an account?" text="Sign in" link="/register" /> */}
@@ -105,4 +106,4 @@ const RegisterComponents: React.FC = () => {
     );
 }
 
-export default RegisterComponents;
+export default LoginComponents;
