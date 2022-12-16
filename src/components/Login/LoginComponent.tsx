@@ -9,7 +9,7 @@ const LoginComponents: React.FC = () => {
     const { handleSubmit, register, formState: { errors } } = useForm({});
     localStorage.clear();
     const [ alertToast ] = useIonToast();
-    const [preloader, preloaderDismiss] = useIonLoading();
+    const [ preloader, preloaderDismiss ] = useIonLoading();
 
     const onSubmit = (userData: any) => {
         // console.log(userData);
@@ -73,7 +73,7 @@ const LoginComponents: React.FC = () => {
                             <ErrorMessage
                             errors={errors}
                             name="email"
-                            as={<div style={{ color: 'red' }} />}
+                            as={<div style={{ color: 'red', marginLeft: '25px' }} />}
                             />
                         <IonItem>
                             <IonLabel>Password: </IonLabel>
@@ -92,7 +92,7 @@ const LoginComponents: React.FC = () => {
                         <ErrorMessage
                           errors={errors}
                           name="password"
-                          as={<div style={{ color: 'red' }} />}
+                          as={<div style={{ color: 'red', marginLeft: '25px' }} />}
                         />
                         <div className='btnCenter'>
                             <IonButton type="submit">submit</IonButton>

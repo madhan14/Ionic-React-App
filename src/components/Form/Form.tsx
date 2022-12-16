@@ -1,4 +1,4 @@
-import { IonItem, IonLabel, IonButton, IonInput, IonToggle, useIonToast } from "@ionic/react";
+import { IonItem, IonLabel, IonButton, IonInput, IonToggle, useIonToast, useIonLoading } from "@ionic/react";
 import React from 'react';
 import { env } from '../../pages/env/env';
 import { useForm, Controller } from 'react-hook-form';
@@ -22,13 +22,19 @@ const FORM = (element: any) => {
             }
         }
     );
-    const [presentToast] = useIonToast();
+
+    const [ presentToast ] = useIonToast();
+    const [ preloader, preloaderDismiss ] = useIonLoading();
 
     const onSubmitUser = (userData: any) => {
         // console.log(userData)
         // var encrypt = Crypto.AES.encrypt(userData.password, "Test#123").toString();
         // console.log("Encryption: "+encrypt)
         // console.log("Decryption: "+Crypto.AES.decrypt(encrypt, "Test#123").toString(Crypto.enc.Utf8))
+        preloader({
+            message: 'Updating user...',
+            spinner: 'circular'
+        })
         var UpdateUser = JSON.stringify({
             "fields": {
                 "email": userData.email,
@@ -38,6 +44,7 @@ const FORM = (element: any) => {
         });
 
         const reload = () => {
+            preloaderDismiss();
             window.location.href = '/adminIndex'
         }
         
@@ -65,7 +72,12 @@ const FORM = (element: any) => {
         })
         .then(error => console.log('error', error))
     }
+
     const onSubmitVideo = (userData: any) => {
+        preloader({
+            message: 'Updating video',
+            spinner: 'circular'
+        });
         var UpdateVideo = JSON.stringify({
             "fields": {
                 "Title": userData.title,
@@ -75,6 +87,7 @@ const FORM = (element: any) => {
         });
                 
         const reload = () => {
+            preloaderDismiss();
             window.location.href = '/adminIndex'
         }
         fetch(env.video_url+'/'+userData.id, {
@@ -101,6 +114,7 @@ const FORM = (element: any) => {
         })
         .then(error => console.log('error', error))
     }
+
     if(element.type.video === true){
         return (
             <form id={element.element.id} onSubmit={handleSubmit(onSubmitVideo)}>
@@ -121,7 +135,7 @@ const FORM = (element: any) => {
                 <ErrorMessage
                     errors={errors}
                     name="title"
-                    as={<div style={{ color: 'red' }} />}
+                    as={<div style={{ color: 'red', marginLeft: '25px' }} />}
                 />
                 <IonItem>
                     <IonLabel>URL: </IonLabel>
@@ -140,7 +154,7 @@ const FORM = (element: any) => {
                 <ErrorMessage
                     errors={errors}
                     name="url"
-                    as={<div style={{ color: 'red' }} />}
+                    as={<div style={{ color: 'red', marginLeft: '25px' }} />}
                 />
                 <IonItem>
                     <IonLabel>Active: </IonLabel>
@@ -158,6 +172,8 @@ const FORM = (element: any) => {
                             );
                         }}
                     />
+                </IonItem>
+                <IonItem lines="none" style={{ display: 'none' }}>
                     <IonInput id="id"
                         {
                             ...register('id', {
@@ -170,8 +186,9 @@ const FORM = (element: any) => {
                         }
                     />
                 </IonItem>
-                
-                <IonButton type="submit">Update</IonButton>
+                <div className="btnCenter">
+                    <IonButton type="submit">Update</IonButton>
+                </div>
             </form>
         );
     } else {
@@ -194,7 +211,7 @@ const FORM = (element: any) => {
                 <ErrorMessage
                     errors={errors}
                     name="email"
-                    as={<div style={{ color: 'red' }} />}
+                    as={<div style={{ color: 'red', marginLeft: '25px' }} />}
                 />
                 <IonItem>
                     <IonLabel>Password: </IonLabel>
@@ -213,7 +230,7 @@ const FORM = (element: any) => {
                 <ErrorMessage
                     errors={errors}
                     name="password"
-                    as={<div style={{ color: 'red' }} />}
+                    as={<div style={{ color: 'red', marginLeft: '25px' }} />}
                 />
                 <IonItem>
                     <IonLabel>Admin: </IonLabel>
@@ -231,6 +248,8 @@ const FORM = (element: any) => {
                             );
                         }}
                     />
+                </IonItem>
+                <IonItem style={{ display: 'none' }}>
                     <IonInput id="id"
                         {
                             ...register('id', {
@@ -243,10 +262,11 @@ const FORM = (element: any) => {
                         }
                     />
                 </IonItem>
-                <IonButton type="submit">Update</IonButton>
+                <div className="btnCenter">
+                    <IonButton type="submit">Update</IonButton>
+                </div>
             </form>
         );
-
     }
 }
 

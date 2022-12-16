@@ -1,4 +1,4 @@
-import { IonToggle, IonInput, IonButton, IonItem, IonLabel, useIonToast } from "@ionic/react";
+import { IonToggle, IonInput, IonButton, IonItem, IonLabel, useIonToast, useIonLoading } from "@ionic/react";
 import { checkmarkDoneOutline } from "ionicons/icons";
 import { env } from '../../pages/env/env';
 import { useForm, Controller } from 'react-hook-form';
@@ -11,12 +11,19 @@ const Create = (props: any) => {
     
     const [Toast] = useIonToast();
 
+    const [ preloader, preloaderDismiss ] = useIonLoading();
+
     const reload = () => {
+        preloaderDismiss();
         window.location.href = '/adminIndex'
     }
 
     const onSubmitUser = (userData: any) => {
         // console.log(userData);
+        preloader({
+            message: 'Adding user...',
+            spinner: 'circles'
+        });
         var admin;
         if(userData.Admin === undefined){
             admin = 'false'
@@ -62,6 +69,10 @@ const Create = (props: any) => {
 
     const onSubmitVideo = (userData: any) => {
         // console.log(userData);
+        preloader({
+            message: 'Adding video...',
+            spinner: 'circles'
+        });
         var status, url;
         if(userData.Active === undefined){
             status = 'false'
@@ -135,7 +146,7 @@ const Create = (props: any) => {
             <ErrorMessage
                 errors={errors}
                 name="title"
-                as={<div style={{ color: 'red' }} />}
+                as={<div style={{ color: 'red', marginLeft: '25px' }} />}
             />
             <IonItem>
                 <IonLabel>URL: </IonLabel>
@@ -154,9 +165,9 @@ const Create = (props: any) => {
             <ErrorMessage
                 errors={errors}
                 name="url"
-                as={<div style={{ color: 'red' }} />}
+                as={<div style={{ color: 'red', marginLeft: '25px' }} />}
             />
-            <IonItem>
+            <IonItem lines="full">
                 <IonLabel>Active: </IonLabel>
                 <Controller
                     name="Active"
@@ -173,7 +184,9 @@ const Create = (props: any) => {
                     }}
                 />
             </IonItem>
-            <IonButton type="submit">submit</IonButton>
+            <div className="btnCenter">
+                <IonButton type="submit">submit</IonButton>
+            </div>
         </form>
         );
     } else {
@@ -196,7 +209,7 @@ const Create = (props: any) => {
                 <ErrorMessage
                     errors={errors}
                     name="email"
-                    as={<div style={{ color: 'red' }} />}
+                    as={<div style={{ color: 'red', marginLeft: '25px' }} />}
                 />
                 <IonItem>
                     <IonLabel>Password: </IonLabel>
@@ -215,9 +228,9 @@ const Create = (props: any) => {
                 <ErrorMessage
                     errors={errors}
                     name="password"
-                    as={<div style={{ color: 'red' }} />}
+                    as={<div style={{ color: 'red', marginLeft: '25px' }} />}
                 />
-                <IonItem>
+                <IonItem lines="full">
                     <IonLabel>Admin: </IonLabel>
                     <Controller
                         name="Admin"
@@ -234,7 +247,9 @@ const Create = (props: any) => {
                         }}
                     />
                 </IonItem>
-                <IonButton type="submit">submit</IonButton>
+                <div className="btnCenter">
+                    <IonButton type="submit">submit</IonButton>
+                </div>
         </form>
         );
     }

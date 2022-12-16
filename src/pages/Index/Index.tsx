@@ -1,4 +1,4 @@
-import {  IonContent, IonHeader, IonTitle,IonToolbar, IonPage, IonItem, useIonLoading, useIonViewDidEnter, useIonViewDidLeave, useIonViewWillEnter, useIonViewWillLeave } from '@ionic/react';
+import {  IonContent, IonHeader, IonTitle,IonToolbar, IonPage, IonItem, useIonLoading } from '@ionic/react';
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
@@ -8,30 +8,24 @@ import './Index.css';
     
 const Index: React.FC = () => {
     const [ listItems, setListItems ] = useState<any>([]);
+    const [ loaded, setLoaded ] = useState(false);
+    const [ preloader, preloaderDismiss ] = useIonLoading();
 
-    const [preloader, preloaderDismiss] = useIonLoading();
-
-    useIonViewDidEnter(() => {
-        // console.log('ionViewDidEnter event fired');
-    });
-    
-    useIonViewDidLeave(() => {
-        console.log('ionViewDidLeave event fired');
-    });
-    
-    useIonViewWillEnter(() => {
-        // console.log('ionViewWillEnter event fired');
-    });
-    
-    useIonViewWillLeave(() => {
-        console.log('ionViewWillLeave event fired');
-    });
+    if(!loaded){
+        preloader({
+            message: 'Loading...',
+            spinner: 'lines',
+            duration: 1000
+        });
+    } else {
+        preloaderDismiss();
+    }
 
     React.useEffect(() => {
         sendRequest()
         .then((data: any) => {
             setListItems(data.records)
-            
+            setLoaded(true);
         })
     }, []);
 
