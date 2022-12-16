@@ -64,7 +64,7 @@ const CRUD = (video: any) => {
                  <IonModal ref={modal} id="modal" trigger="create">
                     <IonContent>
                         <IonToolbar>
-                            <IonTitle>Add {video.video == true ? 'video': 'user'}</IonTitle>
+                            <IonTitle>Add {video.video === true ? 'video': 'user'}</IonTitle>
                             <IonButtons slot="end">
                                 <IonButton color="light" onClick={() => modal.current?.dismiss()}>
                                     <IonIcon slot="icon-only" icon={closeOutline}  onClick={() => modal.current?.dismiss()} />
