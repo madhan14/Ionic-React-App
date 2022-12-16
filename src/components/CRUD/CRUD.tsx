@@ -48,7 +48,7 @@ const CRUD = (video: any) => {
                             label = element.fields.email
                         }
                         return(
-                            <IonItem key={index} id={element.id}>
+                            <IonItem lines="full" style={{ pointerEvents: 'none' }} key={index} id={element.id}>
                                 <IonLabel>{label}</IonLabel>
                                 <MODAL element={element} type={video} />
                                 {/* <IonIcon color="danger" icon={trash} itemType="delete" onClick={(e) => remove(e)} /> */}
@@ -61,10 +61,10 @@ const CRUD = (video: any) => {
                 <IonFabButton id="create">
                     <IonIcon icon={add} />
                 </IonFabButton>
-                <IonModal ref={modal} id="modal" trigger="create">
+                 <IonModal ref={modal} id="modal" trigger="create">
                     <IonContent>
                         <IonToolbar>
-                            <IonTitle>Create</IonTitle>
+                            <IonTitle>Add {video.video == true ? 'video': 'user'}</IonTitle>
                             <IonButtons slot="end">
                                 <IonButton color="light" onClick={() => modal.current?.dismiss()}>
                                     <IonIcon slot="icon-only" icon={closeOutline}  onClick={() => modal.current?.dismiss()} />
