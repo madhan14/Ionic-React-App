@@ -1,4 +1,4 @@
-import {  IonContent, IonHeader, IonTitle,IonToolbar, IonPage, IonGrid, IonRow, IonCol } from '@ionic/react';
+import {  IonContent, IonHeader, IonTitle,IonToolbar, IonPage, IonGrid, IonRow, IonCol, IonItem } from '@ionic/react';
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
@@ -39,24 +39,26 @@ const Index: React.FC = () => {
                     </IonToolbar>
                 </IonHeader>
                 <IonContent fullscreen>
-                    <div className="container">
-                        <IonGrid>
-                            <IonRow>
+                    {/* <div className="container"> */}
+                        {/* <IonGrid> */}
+                            
                             {
                                 // eslint-disable-next-line
                                 listItems.map((element: any, index: any) => {
                                     if(element.fields.active === "true"){
                                     return(
-                                        <IonCol key={index}>
-                                            <iframe title={element.fields.Title} src={element.fields.url} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>                                                    
-                                        </IonCol> 
+                                        <IonItem key={index}>
+                                            <IonCol>
+                                                <iframe title={element.fields.Title} src={element.fields.url} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>                                                    
+                                            </IonCol> 
+                                        </IonItem>
                                     );
                                     }
                                 })
                             }
-                            </IonRow>
-                        </IonGrid>
-                    </div>
+                            
+                        {/* </IonGrid> */}
+                    {/* </div> */}
                 </IonContent>
             </IonPage>
         </>
