@@ -25,7 +25,7 @@ const FORM = (element: any) => {
     const [presentToast] = useIonToast();
 
     const onSubmitUser = (userData: any) => {
-        console.log(userData)
+        // console.log(userData)
         // var encrypt = Crypto.AES.encrypt(userData.password, "Test#123").toString();
         // console.log("Encryption: "+encrypt)
         // console.log("Decryption: "+Crypto.AES.decrypt(encrypt, "Test#123").toString(Crypto.enc.Utf8))

@@ -1,5 +1,4 @@
-import {  IonContent, IonHeader, IonTitle,IonToolbar, IonPage, IonItem, IonIcon } from '@ionic/react';
-import { create } from "ionicons/icons";
+import {  IonContent, IonHeader, IonTitle,IonToolbar, IonPage, IonItem } from '@ionic/react';
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
@@ -37,9 +36,8 @@ const Index: React.FC = () => {
                         <IonTitle>
                             Tamil Magan
                             {
-                                localStorage.getItem("isAdmin") == 'yes'? <a className="inline" href="/adminIndex">Edit</a> : ''
+                                localStorage.getItem("isAdmin") === 'yes'? <a className="inline" href="/adminIndex">Edit</a> : ''
                             }
-                            {/* <a className="inline" href="/login">Sign In</a> */}
                         </IonTitle>
                     </IonToolbar>
                 </IonHeader>

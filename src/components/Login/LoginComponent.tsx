@@ -33,7 +33,7 @@ const RegisterComponents: React.FC = () => {
             var data = JSON.parse(result);
             // var data = result;
             // console.log(data);
-            console.log(data.records);
+            // console.log(data.records);
             data.records.forEach((records: any) => {
                 if(records.fields.email === userEmail && records.fields.pwd === userPwd){
                     localStorage.setItem("email", records.fields.email);

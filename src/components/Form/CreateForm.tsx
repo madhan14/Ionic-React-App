@@ -34,7 +34,7 @@ const Create = (props: any) => {
                 }
             ]
         }
-        console.log(newRecord);
+        // console.log(newRecord);
         fetch(env.user_url, {
             method: 'POST',
             headers: {
@@ -61,7 +61,7 @@ const Create = (props: any) => {
     }
 
     const onSubmitVideo = (userData: any) => {
-        console.log(userData);
+        // console.log(userData);
         var status, url;
         if(userData.Active === undefined){
             status = 'false'
@@ -77,7 +77,7 @@ const Create = (props: any) => {
             url = userData.url
         }
 
-        console.log(url);
+        // console.log(url);
         var newRecord = {
             "records": [
                 {
@@ -89,7 +89,7 @@ const Create = (props: any) => {
                 }
             ]
         }
-        console.log(newRecord)
+        // console.log(newRecord)
         fetch(env.video_url, {
             method: 'POST',
             headers: {

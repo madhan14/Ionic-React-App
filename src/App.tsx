@@ -14,9 +14,7 @@ import { IonReactRouter } from '@ionic/react-router';
 // import { home, personCircle } from 'ionicons/icons';
 import Index from './pages/Index/Index';
 import Login from './pages/Login/Login';
-import Register from './pages/Register/Register';
 import ModalForm from './pages/ModalForm/ModalForm';
-import AddVideos from './pages/AddVideos/AddVideos';
 import AdminIndex from './pages/AdminIndex/AdminIndex';
 
 /* Core CSS required for Ionic components to work properly */
@@ -50,17 +48,11 @@ const App: React.FC = () => (
         <Route exact path="/">
           <Login />
         </Route>
-        <Route exact path="/register">
-          <Register />
-        </Route>
         <Route exact path="/ModalForm">
           <ModalForm />
         </Route>
         <Route exact path="/AdminIndex">
           <AdminIndex />
-        </Route>
-        <Route exact path="/addVideos">
-          <AddVideos />
         </Route>
 
         {/* <Route exact path="/listVideos">

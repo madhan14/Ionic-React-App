@@ -40,8 +40,8 @@ const App: React.FunctionComponent = () => {
     }
   );
 
-    console.log(errors);
-    console.log(getValues());
+    // console.log(errors);
+    // console.log(getValues());
 
     /**
      *
