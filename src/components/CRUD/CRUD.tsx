@@ -1,6 +1,6 @@
 import { IonItem, IonList, IonLabel, IonFab, IonFabButton, IonIcon, IonModal,
     IonContent, IonToolbar, IonTitle, IonButtons, IonButton, IonThumbnail } from "@ionic/react";
-import { add, closeOutline, logoYoutube, personCircle} from "ionicons/icons";
+import { add, closeOutline, logoYoutube, personAdd, personCircle} from "ionicons/icons";
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { env } from '../../pages/env/env';
@@ -65,7 +65,7 @@ const CRUD = (video: any) => {
             </IonList>
             <IonFab slot="fixed" vertical="bottom" horizontal="end">
                 <IonFabButton id="create">
-                    <IonIcon icon={add} />
+                    <IonIcon icon={video.video==true? add : personAdd} />
                 </IonFabButton>
                     <IonModal ref={modal} id="modal" trigger="create">
                     <IonContent>
