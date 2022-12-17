@@ -7,18 +7,18 @@ import './Form.css';
 import { checkmarkDoneOutline } from "ionicons/icons";
 // var Crypto = require('crypto-js');
 
-const FORM = (element: any) => {
+const FORM = (props: any) => {
     // console.log(element);
     const { handleSubmit, control, setValue, register, formState: { errors } } = useForm(
         {
             defaultValues: {
-                email: element.type.user === true ? element.element.fields.email : '',
-                Admin: element.type.user === true ? element.element.fields.isAdmin : '',
+                email: props.type.user === true ? props.element.fields.email : '',
+                Admin: props.type.user === true ? props.element.fields.isAdmin : '',
                 password: '',
-                title: element.type.user === false ? element.element.fields.Title : '',
-                url:  element.type.user === false ? element.element.fields.url : '',
-                Active: element.type.user === false ? element.element.fields.active : '',
-                id: element.element.id,
+                title: props.type.user === false ? props.element.fields.Title : '',
+                url:  props.type.user === false ? props.element.fields.url : '',
+                Active: props.type.user === false ? props.element.fields.active : '',
+                id: props.element.id,
             }
         }
     );
@@ -115,9 +115,9 @@ const FORM = (element: any) => {
         .then(error => console.log('error', error))
     }
 
-    if(element.type.video === true){
+    if(props.type.video === true){
         return (
-            <form id={element.element.id} onSubmit={handleSubmit(onSubmitVideo)}>
+            <form id={props.element.id} onSubmit={handleSubmit(onSubmitVideo)}>
                 <IonItem>
                     <IonLabel>Title: </IonLabel>
                     <IonInput
@@ -193,7 +193,7 @@ const FORM = (element: any) => {
         );
     } else {
         return (
-            <form id={element.element.id} onSubmit={handleSubmit(onSubmitUser)}>
+            <form id={props.element.id} onSubmit={handleSubmit(onSubmitUser)}>
                 <IonItem>
                     <IonLabel>Email: </IonLabel>
                     <IonInput

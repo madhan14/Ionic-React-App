@@ -1,17 +1,6 @@
-// import { Redirect, Route } from 'react-router-dom';
 import { Route } from 'react-router-dom';
-import {
-  IonApp,
-  // IonIcon,
-  // IonLabel,
-  IonRouterOutlet,
-  // IonTabBar,
-  // IonTabButton,
-  // IonTabs,
-  setupIonicReact
-} from '@ionic/react';
+import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-// import { home, personCircle } from 'ionicons/icons';
 import Index from './pages/Index/Index';
 import Login from './pages/Login/Login';
 import ModalForm from './pages/ModalForm/ModalForm';
@@ -36,7 +25,9 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-setupIonicReact();
+setupIonicReact({
+  hardwareBackButton: false
+});
 
 const App: React.FC = () => (
   <IonApp>
@@ -54,10 +45,6 @@ const App: React.FC = () => (
         <Route exact path="/AdminIndex">
           <AdminIndex />
         </Route>
-
-        {/* <Route exact path="/listVideos">
-          <Tab5 />
-        </Route> */}
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

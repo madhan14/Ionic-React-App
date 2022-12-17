@@ -39,17 +39,15 @@ const CRUD = (video: any) => {
                 {
                     
                     listItems?.map((element: any, index: any) => {
-                        var label, logo, logoColor, deletType;
+                        var label, logo, logoColor;
                         if(video.video === true){
                             label = element.fields.Title;
                             logo = logoYoutube;
                             logoColor = "danger";
-                            deletType = "videoDelete";
                         }else{
                             label = element.fields.email;
                             logo = personCircle;
                             logoColor = "primary";
-                            deletType = "userDelete";
                         }
                         return(
                             <IonItem lines="full" style={{ pointerEvents: 'none' }} key={index} id={element.id}>
@@ -65,7 +63,7 @@ const CRUD = (video: any) => {
             </IonList>
             <IonFab slot="fixed" vertical="bottom" horizontal="end">
                 <IonFabButton id="create">
-                    <IonIcon icon={video.video==true? add : personAdd} />
+                    <IonIcon icon={video.video === true? add : personAdd} />
                 </IonFabButton>
                     <IonModal ref={modal} id="modal" trigger="create">
                     <IonContent>
