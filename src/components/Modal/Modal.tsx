@@ -13,7 +13,7 @@ const MODAL = (props: any) => {
 
     return (
         <>
-            <IonIcon color="primary" style={{ pointerEvents: 'auto', heigth: '100%' }} icon={create} id={props.element.id} />
+            <IonIcon color="primary" style={{ pointerEvents: 'initial', heigth: '100%' }} icon={create} id={props.element.id} />
             <IonModal id="modal" ref={modal} trigger={props.element.id}>
                 <IonContent>
                     <IonToolbar>
