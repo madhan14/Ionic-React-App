@@ -26,7 +26,7 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 setupIonicReact({
-  hardwareBackButton: false
+  hardwareBackButton: true
 });
 
 const App: React.FC = () => (

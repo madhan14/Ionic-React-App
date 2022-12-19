@@ -3,6 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import { env } from '../env/env';
+import { App } from '@capacitor/app';
 
 import './Index.css';
     
@@ -10,6 +11,10 @@ const Index: React.FC = () => {
     const [ listItems, setListItems ] = useState<any>([]);
     const [ loaded, setLoaded ] = useState(false);
     const [ preloader, preloaderDismiss ] = useIonLoading();
+
+    document.addEventListener('ionBackButton', (ev) => {
+        App.exitApp();
+    })
 
     if(!loaded){
         preloader({
