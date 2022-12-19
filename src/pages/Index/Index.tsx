@@ -20,7 +20,7 @@ const Index: React.FC = () => {
         preloader({
             message: 'Loading...',
             spinner: 'lines',
-            duration: 1000
+            duration: 2000
         });
     } else {
         preloaderDismiss();
