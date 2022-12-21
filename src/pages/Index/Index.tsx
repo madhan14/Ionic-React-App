@@ -1,4 +1,4 @@
-import {  IonContent, IonHeader, IonTitle,IonToolbar, IonPage, IonItem, useIonLoading } from '@ionic/react';
+import {  IonContent, IonHeader, IonTitle,IonToolbar, IonPage, IonItem, useIonLoading, IonMenu } from '@ionic/react';
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
@@ -6,6 +6,7 @@ import { env } from '../env/env';
 import { App } from '@capacitor/app';
 
 import './Index.css';
+import Menu from '../../components/Menu/Menu';
     
 const Index: React.FC = () => {
     const [ listItems, setListItems ] = useState<any>([]);
@@ -55,7 +56,8 @@ const Index: React.FC = () => {
     }
     return (
         <>
-            <IonPage>
+            <Menu />
+            <IonPage id="main-content">
                 <IonHeader>
                     <IonToolbar>
                         <IonTitle>
