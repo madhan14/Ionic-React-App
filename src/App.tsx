@@ -24,6 +24,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import Charts from './components/Chart/Chart';
 
 setupIonicReact({
   hardwareBackButton: true
@@ -44,6 +45,9 @@ const App: React.FC = () => (
         </Route>
         <Route exact path="/AdminIndex">
           <AdminIndex />
+        </Route>
+        <Route exact path="/Charts">
+          <Charts />
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>
